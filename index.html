@@ -110,10 +110,18 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   position: relative; min-height: 100vh; overflow: hidden; padding-top: 64px;
 }
 
-/* Layer 1: Crowd background image */
+/* Layer 1: Walkout video background (silent loop) */
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background: url('./assets/buck_levelup.jpg') center 30% / cover no-repeat;
+  background: url('./assets/buck_levelup.jpg') center 30% / cover no-repeat; /* fallback */
+  overflow: hidden;
+}
+.hero-bg video {
+  position: absolute; top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
 }
 
 /* Layer 2: Green cinematic color wash — the "production" filter */
@@ -627,8 +635,12 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 
 <!-- ========== HERO (Tony Robbins-style composite) ========== -->
 <section class="hero">
-  <!-- Layer 1: Crowd background -->
-  <div class="hero-bg"></div>
+  <!-- Layer 1: Walkout video background (silent loop) -->
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline poster="./assets/buck_levelup.jpg">
+      <source src="./assets/walkout-loop.mp4" type="video/mp4">
+    </video>
+  </div>
   <!-- Layer 2: Green cinematic tint -->
   <div class="hero-tint"></div>
   <!-- Layer 3: Bottom fade for text -->
