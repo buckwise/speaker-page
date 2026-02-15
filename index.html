@@ -183,73 +183,78 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   .hero-image-glow { width: 250px; height: 250px; }
 }
 
-/* ========== ROADMAP ========== */
-.roadmap { padding: 120px 0 100px; position: relative; overflow: hidden; }
-.roadmap-track-wrapper {
-  position: relative; overflow-x: auto; overflow-y: visible;
-  padding: 40px 0 60px; -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin; scrollbar-color: rgba(0,255,178,.3) transparent;
+/* ========== ROADMAP (3-col zigzag grid) ========== */
+.roadmap { padding: 120px 0 100px; position: relative; }
+.roadmap-subtitle {
+  text-align: center; font-size: .85rem; color: rgba(255,255,255,.4);
+  font-style: italic; margin-top: -32px; margin-bottom: 56px;
 }
-.roadmap-track-wrapper::-webkit-scrollbar { height: 4px; }
-.roadmap-track-wrapper::-webkit-scrollbar-track { background: transparent; }
-.roadmap-track-wrapper::-webkit-scrollbar-thumb { background: rgba(0,255,178,.3); border-radius: 4px; }
-.roadmap-track {
-  display: flex; align-items: center; gap: 0;
-  min-width: max-content; padding: 0 40px; position: relative;
+.roadmap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px 48px; max-width: 900px; margin: 0 auto;
+  position: relative;
 }
-.roadmap-line {
-  position: absolute; top: 50%; left: 40px; right: 40px;
-  height: 2px; background: rgba(255,255,255,.08);
-  transform: translateY(-1px); z-index: 0;
+/* SVG path connecting the nodes sits behind */
+.roadmap-path-svg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
 }
+.roadmap-path-svg path {
+  fill: none; stroke: rgba(0,255,178,.15); stroke-width: 2;
+  stroke-dasharray: 8 6;
+}
+
 .roadmap-node {
   position: relative; z-index: 2; display: flex; flex-direction: column;
-  align-items: center; cursor: pointer; flex-shrink: 0;
+  align-items: center; cursor: pointer; text-align: center;
 }
 .roadmap-node .node-logo {
-  width: 110px; height: 110px;
+  width: 120px; height: 120px;
   background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px; display: flex; align-items: center; justify-content: center;
   transition: border-color .3s, box-shadow .3s, transform .3s;
-  position: relative; overflow: visible;
+  position: relative;
 }
 .roadmap-node:hover .node-logo,
 .roadmap-node.active .node-logo {
-  border-color: rgba(0,255,178,.4);
-  box-shadow: 0 0 30px rgba(0,255,178,.15);
-  transform: scale(1.08);
+  border-color: rgba(0,255,178,.5);
+  box-shadow: 0 0 36px rgba(0,255,178,.18);
+  transform: scale(1.06);
+}
+.roadmap-node .node-logo img {
+  width: 80px; height: auto; object-fit: contain;
+  filter: brightness(0) invert(1); /* make logos white */
+  transition: filter .3s;
+}
+.roadmap-node .node-logo img.color-logo {
+  filter: none; /* logos that should keep their color */
 }
 .roadmap-node .node-label {
-  margin-top: 14px; font-size: .75rem; font-weight: 600;
-  color: rgba(255,255,255,.5); letter-spacing: 1px; text-transform: uppercase;
-  transition: color .3s; white-space: nowrap;
+  margin-top: 14px; font-size: .8rem; font-weight: 600;
+  color: rgba(255,255,255,.55); letter-spacing: .5px;
+  transition: color .3s;
 }
 .roadmap-node:hover .node-label,
 .roadmap-node.active .node-label { color: #00ffb2; }
-
-.roadmap-connector {
-  width: 80px; height: 2px; background: rgba(255,255,255,.08);
-  flex-shrink: 0; position: relative; z-index: 1;
+.roadmap-node .node-role {
+  font-size: .7rem; color: rgba(255,255,255,.3); margin-top: 4px;
+  max-width: 180px; line-height: 1.4;
 }
-.roadmap-connector.with-annotation {
-  width: 160px; display: flex; flex-direction: column; align-items: center;
-  height: auto; background: none;
-}
-.roadmap-connector.with-annotation .connector-line {
-  width: 100%; height: 2px; background: rgba(255,255,255,.08);
-}
-.roadmap-annotation {
-  font-size: .65rem; color: rgba(255,255,255,.35); text-align: center;
-  max-width: 180px; line-height: 1.45; margin-top: 16px;
-  font-style: italic; letter-spacing: .3px;
+.roadmap-node .node-step {
+  position: absolute; top: -8px; left: -8px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #08070e; border: 2px solid rgba(0,255,178,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .6rem; font-weight: 800; color: #00ffb2;
+  z-index: 3;
 }
 
 /* Qinary node special */
 .roadmap-node.qinary-node .node-logo {
-  width: 130px; height: 130px; border-radius: 24px;
-  border-color: rgba(0,255,178,.3);
-  box-shadow: 0 0 40px rgba(0,255,178,.1);
+  width: 140px; height: 140px; border-radius: 28px;
+  border-color: rgba(0,255,178,.35);
+  box-shadow: 0 0 40px rgba(0,255,178,.12);
   animation: qinaryPulse 3s ease-in-out infinite;
 }
 @keyframes qinaryPulse {
@@ -263,15 +268,16 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   letter-spacing: 1.5px; z-index: 3;
 }
 
-/* Hover card */
+/* Hover card — positioned BELOW node to avoid clipping */
 .roadmap-card {
-  position: absolute; bottom: calc(100% + 20px); left: 50%;
+  position: absolute; top: calc(100% + 12px); left: 50%;
   transform: translateX(-50%) translateY(8px); opacity: 0;
-  pointer-events: none; transition: opacity .3s, transform .3s;
-  background: rgba(14,14,28,.92); backdrop-filter: blur(24px);
+  pointer-events: none; transition: opacity .25s, transform .25s;
+  background: rgba(14,14,28,.95); backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0,255,178,.15); border-radius: 16px;
-  padding: 20px; width: 290px; z-index: 100;
+  border: 1px solid rgba(0,255,178,.2); border-radius: 14px;
+  padding: 18px; width: 270px; z-index: 200;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
 }
 .roadmap-node:hover .roadmap-card,
 .roadmap-node.active .roadmap-card {
@@ -279,82 +285,69 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 }
 .roadmap-card p { font-size: .85rem; color: rgba(255,255,255,.75); line-height: 1.55; }
 .roadmap-card img {
-  width: 100%; height: 120px; object-fit: cover;
-  border-radius: 8px; margin-top: 12px;
+  width: 100%; height: 100px; object-fit: cover;
+  border-radius: 8px; margin-top: 10px;
 }
-.roadmap-card::after {
-  content: ''; position: absolute; bottom: -8px; left: 50%;
-  width: 16px; height: 16px;
-  background: rgba(14,14,28,.92);
-  border-right: 1px solid rgba(0,255,178,.15);
-  border-bottom: 1px solid rgba(0,255,178,.15);
+.roadmap-card::before {
+  content: ''; position: absolute; top: -7px; left: 50%;
+  width: 14px; height: 14px;
+  background: rgba(14,14,28,.95);
+  border-left: 1px solid rgba(0,255,178,.2);
+  border-top: 1px solid rgba(0,255,178,.2);
   transform: translateX(-50%) rotate(45deg);
 }
 
-/* Logo SVGs inside nodes */
-.logo-iheart svg { width: 65px; height: auto; }
-.logo-nike svg { width: 75px; height: auto; }
-.logo-starbucks svg { width: 70px; height: auto; }
+/* Logo text treatments for brands */
 .logo-google { display: flex; gap: 1px; align-items: baseline; }
-.logo-google span {
-  font-family: 'DM Sans', sans-serif; font-weight: 700;
-  font-size: 1.8rem;
+.logo-google span { font-weight: 700; font-size: 1.65rem; }
+.logo-text {
+  font-family: 'DM Sans', sans-serif; font-weight: 800;
+  color: #fff; letter-spacing: 1px; text-align: center;
+  line-height: 1.2;
 }
-.logo-10x {
-  font-family: 'DM Sans', sans-serif; font-weight: 900;
-  font-size: 2.4rem; color: #fff; letter-spacing: -1px;
-}
-.logo-serhant {
-  font-family: 'DM Sans', sans-serif; font-weight: 700;
-  font-size: 1.15rem; color: #fff; letter-spacing: 4px;
-}
-.logo-qinary {
+.logo-qinary-text {
   font-family: 'DM Sans', sans-serif; font-weight: 800;
   font-size: 1.35rem; color: #00ffb2; letter-spacing: 3px;
   text-shadow: 0 0 20px rgba(0,255,178,.4);
 }
 
-/* MOBILE ROADMAP */
+/* Row 2 reversed order for zigzag feel */
+.roadmap-node:nth-child(4) { order: 6; }
+.roadmap-node:nth-child(5) { order: 5; }
+.roadmap-node:nth-child(6) { order: 4; }
+
+/* Row 3 centered */
+.roadmap-node:nth-child(7) {
+  grid-column: 2 / 3;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-  .roadmap-track-wrapper { overflow-x: visible; padding: 20px 0; }
-  .roadmap-track {
-    flex-direction: column; min-width: auto; padding: 0;
-    gap: 0; align-items: center;
+  .roadmap-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px; max-width: 360px;
   }
-  .roadmap-line { display: none; }
-  .roadmap-connector {
-    width: 2px !important; height: 40px; margin: 0 auto;
-    background: rgba(255,255,255,.08);
-  }
-  .roadmap-connector.with-annotation {
-    width: auto !important; height: auto;
-    flex-direction: column; background: none;
-  }
-  .roadmap-connector.with-annotation .connector-line {
-    width: 2px; height: 20px; margin: 0 auto;
-  }
-  .roadmap-annotation { max-width: 260px; margin: 10px auto; font-size: .7rem; }
-  .roadmap-node { flex-direction: column; align-items: center; width: 100%; max-width: 320px; }
-  .roadmap-node .node-logo { width: 80px; height: 80px; }
+  .roadmap-path-svg { display: none; }
+  .roadmap-node .node-logo { width: 90px; height: 90px; }
   .roadmap-node.qinary-node .node-logo { width: 100px; height: 100px; }
-  .roadmap-card {
-    position: relative; bottom: auto; left: auto; transform: none;
-    opacity: 0; max-height: 0; overflow: hidden; width: 100%;
-    margin-top: 0; padding: 0;
-    transition: opacity .3s, max-height .4s ease, padding .3s, margin .3s;
-  }
-  .roadmap-node.active .roadmap-card {
-    opacity: 1; max-height: 400px; padding: 20px; margin-top: 12px;
-    transform: none;
-  }
-  .roadmap-card::after { display: none; }
-  .logo-iheart svg { width: 50px; }
-  .logo-nike svg { width: 55px; }
-  .logo-starbucks svg { width: 50px; }
-  .logo-google span { font-size: 1.4rem; }
-  .logo-10x { font-size: 1.8rem; }
-  .logo-serhant { font-size: .95rem; letter-spacing: 3px; }
-  .logo-qinary { font-size: 1.1rem; }
+  .roadmap-node .node-logo img { width: 60px; }
+  .roadmap-node .node-label { font-size: .7rem; }
+  .roadmap-node .node-role { display: none; }
+  .roadmap-node .node-step { width: 20px; height: 20px; font-size: .55rem; top: -6px; left: -6px; }
+  .logo-google span { font-size: 1.2rem; }
+  .logo-text { font-size: .85rem !important; }
+  .logo-qinary-text { font-size: 1rem; }
+  .roadmap-card { width: 220px; padding: 14px; }
+  .roadmap-card img { height: 80px; }
+  /* Undo zigzag reorder on mobile */
+  .roadmap-node:nth-child(4) { order: unset; }
+  .roadmap-node:nth-child(5) { order: unset; }
+  .roadmap-node:nth-child(6) { order: unset; }
+  .roadmap-node:nth-child(7) { grid-column: 1 / -1; }
+}
+@media (max-width: 420px) {
+  .roadmap-grid { grid-template-columns: 1fr; max-width: 200px; }
+  .roadmap-node:nth-child(7) { grid-column: auto; }
 }
 
 /* ========== SOCIAL PROOF ========== */
@@ -612,119 +605,108 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 <section class="roadmap" id="journey">
   <div class="container">
     <h2 class="section-label">The <span>Journey</span></h2>
-    <div class="roadmap-track-wrapper">
-      <div class="roadmap-track">
+    <p class="roadmap-subtitle">Built &amp; sold two agencies &bull; Acquired by WPP &bull; SVP at Wunderman Thompson &bull; $842M+ in results</p>
 
-        <!-- STOP 1: iHeartRadio -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo logo-iheart">
-            <svg viewBox="0 0 80 70" width="65" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 65 C40 65 5 42 5 24 C5 14 13 6 23 6 C29 6 34 9 37 13 L40 17 L43 13 C46 9 51 6 57 6 C67 6 75 14 75 24 C75 42 40 65 40 65Z" fill="#C6002B"/>
-              <text x="40" y="38" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="800" font-size="11" fill="white">iHeart</text>
-            </svg>
-          </div>
-          <span class="node-label">iHeartRadio</span>
-          <div class="roadmap-card">
-            <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
-          </div>
+    <div class="roadmap-grid">
+
+      <!-- ROW 1: L → R -->
+      <!-- 1. iHeartRadio -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">1</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/IHeartRadio_logo.svg" alt="iHeartRadio" class="color-logo" style="width:75px;">
         </div>
-
-        <!-- Connector with annotation -->
-        <div class="roadmap-connector with-annotation">
-          <div class="connector-line"></div>
-          <p class="roadmap-annotation">Built &amp; sold two agencies &bull; Acquired by WPP &bull; SVP at Wunderman Thompson</p>
+        <span class="node-label">iHeartRadio</span>
+        <span class="node-role">Syndicated Radio Host</span>
+        <div class="roadmap-card">
+          <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
         </div>
-
-        <!-- STOP 2: Nike -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo logo-nike">
-            <svg viewBox="0 0 80 36" width="75" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 28.8C8.3 28.4 13 26 20.5 21.5C28 17 37 11.5 44 9C51 6.5 58 6 63 7.5C58 11 45 18 35 22.5C25 27 15 30 10.5 30.5C8.5 30.7 7.2 29.8 7.5 28.8Z" fill="white"/>
-            </svg>
-          </div>
-          <span class="node-label">Nike</span>
-          <div class="roadmap-card">
-            <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
-          </div>
-        </div>
-
-        <div class="roadmap-connector"></div>
-
-        <!-- STOP 3: Starbucks -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo logo-starbucks">
-            <svg viewBox="0 0 80 80" width="70" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="40" cy="40" r="38" fill="#00704A"/>
-              <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
-              <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
-              <text x="40" y="37" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="7.5" fill="white" letter-spacing="1">STARBUCKS</text>
-              <text x="40" y="48" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="400" font-size="5.5" fill="rgba(255,255,255,.7)" letter-spacing="1.5">COFFEE</text>
-            </svg>
-          </div>
-          <span class="node-label">Starbucks</span>
-          <div class="roadmap-card">
-            <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
-          </div>
-        </div>
-
-        <div class="roadmap-connector"></div>
-
-        <!-- STOP 4: Google -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo">
-            <div class="logo-google">
-              <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
-            </div>
-          </div>
-          <span class="node-label">Google</span>
-          <div class="roadmap-card">
-            <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
-          </div>
-        </div>
-
-        <div class="roadmap-connector"></div>
-
-        <!-- STOP 5: 10X -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo">
-            <span class="logo-10x">10X</span>
-          </div>
-          <span class="node-label">Cardone Ventures</span>
-          <div class="roadmap-card">
-            <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
-            <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
-          </div>
-        </div>
-
-        <div class="roadmap-connector"></div>
-
-        <!-- STOP 6: SERHANT -->
-        <div class="roadmap-node" onclick="toggleNode(this)">
-          <div class="node-logo">
-            <span class="logo-serhant">SERHANT.</span>
-          </div>
-          <span class="node-label">Serhant</span>
-          <div class="roadmap-card">
-            <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
-            <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
-          </div>
-        </div>
-
-        <div class="roadmap-connector"></div>
-
-        <!-- STOP 7: QINARY -->
-        <div class="roadmap-node qinary-node" onclick="toggleNode(this)">
-          <div class="node-logo">
-            <span class="now-badge">NOW</span>
-            <span class="logo-qinary">QINARY</span>
-          </div>
-          <span class="node-label">Current</span>
-          <div class="roadmap-card">
-            <p>Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
-          </div>
-        </div>
-
       </div>
+
+      <!-- 2. Nike -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">2</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" style="width:70px;">
+        </div>
+        <span class="node-label">Nike</span>
+        <span class="node-role">Social Strategy</span>
+        <div class="roadmap-card">
+          <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
+        </div>
+      </div>
+
+      <!-- 3. Starbucks -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">3</span>
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/800px-Starbucks_Corporation_Logo_2011.svg.png" alt="Starbucks" class="color-logo" style="width:70px;">
+        </div>
+        <span class="node-label">Starbucks</span>
+        <span class="node-role">Social Strategy</span>
+        <div class="roadmap-card">
+          <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
+        </div>
+      </div>
+
+      <!-- ROW 2: R → L (visually reversed via CSS order) -->
+      <!-- 4. Google (displays rightmost) -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">4</span>
+          <div class="logo-google">
+            <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+          </div>
+        </div>
+        <span class="node-label">Google</span>
+        <span class="node-role">Innovation &amp; Platforms</span>
+        <div class="roadmap-card">
+          <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
+        </div>
+      </div>
+
+      <!-- 5. Cardone Ventures (displays center) -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">5</span>
+          <span class="logo-text" style="font-size:1.5rem; font-weight:900; letter-spacing:-1px;">10X</span>
+        </div>
+        <span class="node-label">Cardone Ventures</span>
+        <span class="node-role">CMO &bull; $62M+ in 2 years</span>
+        <div class="roadmap-card">
+          <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
+          <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
+        </div>
+      </div>
+
+      <!-- 6. SERHANT (displays leftmost) -->
+      <div class="roadmap-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="node-step">6</span>
+          <span class="logo-text" style="font-size:1.05rem; letter-spacing:4px;">SERHANT.</span>
+        </div>
+        <span class="node-label">Serhant Ventures</span>
+        <span class="node-role">300% revenue growth</span>
+        <div class="roadmap-card">
+          <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
+          <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
+        </div>
+      </div>
+
+      <!-- ROW 3: Centered -->
+      <!-- 7. QINARY -->
+      <div class="roadmap-node qinary-node" onclick="toggleNode(this)">
+        <div class="node-logo">
+          <span class="now-badge">NOW</span>
+          <span class="logo-qinary-text">QINARY</span>
+        </div>
+        <span class="node-label">Current</span>
+        <span class="node-role">Full-Service Personal Brand Agency</span>
+        <div class="roadmap-card">
+          <p>Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -848,13 +830,18 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 </footer>
 
 <script>
-// Mobile roadmap node toggle
+// Roadmap node toggle (tap on any screen)
 function toggleNode(el) {
-  if (window.innerWidth > 768) return;
   var wasActive = el.classList.contains('active');
   document.querySelectorAll('.roadmap-node').forEach(function(n) { n.classList.remove('active'); });
   if (!wasActive) el.classList.add('active');
 }
+// Close card when tapping outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.roadmap-node')) {
+    document.querySelectorAll('.roadmap-node').forEach(function(n) { n.classList.remove('active'); });
+  }
+});
 
 // Close mobile menu on resize to desktop
 window.addEventListener('resize', function() {
