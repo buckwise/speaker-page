@@ -46,8 +46,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   margin-bottom: 48px;
   text-align: center;
 }
-.section-label span { color: #00ffb2; }
-.accent { color: #00ffb2; }
+.section-label span { color: #39ff14; }
+.accent { color: #39ff14; }
 
 /* ========== NAV ========== */
 .nav {
@@ -66,20 +66,20 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   font-family: 'DM Sans', sans-serif; font-weight: 700;
   font-size: 1.25rem; color: #fff; letter-spacing: 2px;
 }
-.nav-logo span { color: #00ffb2; }
+.nav-logo span { color: #39ff14; }
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a {
   font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.7);
   transition: color .25s; letter-spacing: .5px;
 }
-.nav-links a:hover { color: #00ffb2; }
+.nav-links a:hover { color: #39ff14; }
 .nav-cta {
-  background: #00ffb2; color: #08070e; font-weight: 600;
+  background: #39ff14; color: #08070e; font-weight: 600;
   font-size: .875rem; padding: 10px 24px; border-radius: 8px;
   transition: transform .2s, box-shadow .2s;
   text-transform: uppercase; letter-spacing: 1px;
 }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,255,178,.3); }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(57,255,20,.3); }
 .hamburger {
   display: none; flex-direction: column; gap: 5px; background: none;
   padding: 4px; cursor: pointer;
@@ -96,7 +96,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   font-size: 1.25rem; color: rgba(255,255,255,.8); font-weight: 500;
   transition: color .25s;
 }
-.mobile-menu a:hover { color: #00ffb2; }
+.mobile-menu a:hover { color: #39ff14; }
 
 @media (max-width: 768px) {
   .nav-links, .nav .nav-cta { display: none; }
@@ -126,7 +126,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 .hero-h1 {
   font-size: clamp(3.5rem, 8vw, 6rem);
   font-weight: 800; letter-spacing: -2px;
-  background: linear-gradient(135deg, #ffffff 30%, #00ffb2 100%);
+  background: linear-gradient(135deg, #ffffff 30%, #39ff14 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; line-height: 1.05; margin-bottom: 20px;
 }
@@ -142,12 +142,12 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   margin-bottom: 36px; line-height: 1.6;
 }
 .btn-primary {
-  display: inline-block; background: #00ffb2; color: #08070e;
+  display: inline-block; background: #39ff14; color: #08070e;
   font-weight: 700; font-size: 1rem; padding: 16px 40px;
   border-radius: 12px; transition: transform .25s, box-shadow .25s;
   letter-spacing: 1.5px; text-transform: uppercase;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,255,178,.35); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(57,255,20,.35); }
 
 @media (max-width: 768px) {
   .hero-inner { padding-top: 40px; }
@@ -158,171 +158,156 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   }
 }
 
-/* ========== ROADMAP (3-col zigzag grid) ========== */
+/* ========== JOURNEY TIMELINE ========== */
 .roadmap { padding: 120px 0 100px; position: relative; }
 .roadmap-subtitle {
   text-align: center; font-size: .85rem; color: rgba(255,255,255,.4);
-  font-style: italic; margin-top: -32px; margin-bottom: 56px;
-}
-.roadmap-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 32px 48px; max-width: 900px; margin: 0 auto;
-  position: relative;
-}
-/* SVG path connecting the nodes sits behind */
-.roadmap-path-svg {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-}
-.roadmap-path-svg path {
-  fill: none; stroke: rgba(0,255,178,.15); stroke-width: 2;
-  stroke-dasharray: 8 6;
+  font-style: italic; margin-top: -32px; margin-bottom: 64px;
 }
 
-.roadmap-node {
-  position: relative; z-index: 2; display: flex; flex-direction: column;
-  align-items: center; cursor: pointer; text-align: center;
-}
-.roadmap-node .node-logo {
-  width: 120px; height: 120px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 24px; display: flex; align-items: center; justify-content: center;
-  transition: border-color .3s, box-shadow .3s, transform .3s;
+.journey-timeline {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; max-width: 960px; margin: 0 auto;
   position: relative;
 }
-.roadmap-node:hover .node-logo,
-.roadmap-node.active .node-logo {
-  border-color: rgba(0,255,178,.5);
-  box-shadow: 0 0 36px rgba(0,255,178,.18);
-  transform: scale(1.06);
+
+/* Horizontal connecting line */
+.journey-timeline::before {
+  content: ''; position: absolute;
+  top: 40px; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(57,255,20,.25) 15%, rgba(57,255,20,.25) 85%, transparent);
 }
-.roadmap-node .node-logo img {
-  width: 80px; height: auto; object-fit: contain;
-  filter: brightness(0) invert(1); /* make logos white */
-  transition: filter .3s;
+
+.journey-stop {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 12px 48px; position: relative;
+  cursor: pointer;
 }
-.roadmap-node .node-logo img.color-logo {
-  filter: none; /* logos that should keep their color */
+
+/* Step dot on the line */
+.journey-stop::before {
+  content: attr(data-step);
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #0d0c14; border: 2px solid rgba(57,255,20,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem; font-weight: 800; color: #39ff14;
+  margin-bottom: 24px;
+  transition: all .3s;
+  z-index: 2;
 }
-.roadmap-node .node-label {
-  margin-top: 14px; font-size: .8rem; font-weight: 600;
-  color: rgba(255,255,255,.55); letter-spacing: .5px;
+.journey-stop:hover::before {
+  background: #39ff14; color: #08070e;
+  box-shadow: 0 0 20px rgba(57,255,20,.4);
+}
+
+/* Brand name — clean text, no fake logos */
+.journey-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  color: #fff; letter-spacing: .5px;
+  margin-bottom: 6px;
   transition: color .3s;
 }
-.roadmap-node:hover .node-label,
-.roadmap-node.active .node-label { color: #00ffb2; }
-.roadmap-node .node-role {
-  font-size: .7rem; color: rgba(255,255,255,.3); margin-top: 4px;
-  max-width: 180px; line-height: 1.4;
-}
-.roadmap-node .node-step {
-  position: absolute; top: -8px; left: -8px;
-  width: 24px; height: 24px; border-radius: 50%;
-  background: #08070e; border: 2px solid rgba(0,255,178,.4);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .6rem; font-weight: 800; color: #00ffb2;
-  z-index: 3;
+.journey-stop:hover .journey-brand { color: #39ff14; }
+
+.journey-role {
+  font-size: .75rem; color: rgba(255,255,255,.35);
+  line-height: 1.4; max-width: 200px;
 }
 
-/* Qinary node special */
-.roadmap-node.qinary-node .node-logo {
-  width: 140px; height: 140px; border-radius: 28px;
-  border-color: rgba(0,255,178,.35);
-  box-shadow: 0 0 40px rgba(0,255,178,.12);
-  animation: qinaryPulse 3s ease-in-out infinite;
+/* Special treatment for Qinary (current) */
+.journey-stop.current::before {
+  background: #39ff14; color: #08070e;
+  box-shadow: 0 0 24px rgba(57,255,20,.35);
+  animation: pulseDot 2.5s ease-in-out infinite;
 }
-@keyframes qinaryPulse {
-  0%, 100% { box-shadow: 0 0 30px rgba(0,255,178,.1); }
-  50% { box-shadow: 0 0 50px rgba(0,255,178,.25); }
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 16px rgba(57,255,20,.25); }
+  50% { box-shadow: 0 0 32px rgba(57,255,20,.5); }
 }
-.now-badge {
-  position: absolute; top: -10px; right: -10px;
-  background: #00ffb2; color: #08070e; font-size: .6rem;
-  font-weight: 800; padding: 3px 8px; border-radius: 6px;
-  letter-spacing: 1.5px; z-index: 3;
+.journey-stop.current .journey-brand {
+  color: #39ff14;
+  text-shadow: 0 0 16px rgba(57,255,20,.3);
+}
+.now-tag {
+  display: inline-block; background: #39ff14; color: #08070e;
+  font-size: .55rem; font-weight: 800; padding: 2px 8px;
+  border-radius: 4px; letter-spacing: 1.5px; margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-/* Hover card — positioned BELOW node to avoid clipping */
-.roadmap-card {
-  position: absolute; top: calc(100% + 12px); left: 50%;
+/* Hover detail card */
+.journey-detail {
+  position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%) translateY(8px); opacity: 0;
   pointer-events: none; transition: opacity .25s, transform .25s;
-  background: rgba(14,14,28,.95); backdrop-filter: blur(24px);
+  background: rgba(14,14,28,.96); backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0,255,178,.2); border-radius: 14px;
-  padding: 18px; width: 270px; z-index: 200;
-  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  border: 1px solid rgba(57,255,20,.15); border-radius: 12px;
+  padding: 16px 18px; width: 260px; z-index: 200;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
 }
-.roadmap-node:hover .roadmap-card,
-.roadmap-node.active .roadmap-card {
+.journey-stop:hover .journey-detail {
   opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto;
 }
-.roadmap-card p { font-size: .85rem; color: rgba(255,255,255,.75); line-height: 1.55; }
-.roadmap-card img {
-  width: 100%; height: 100px; object-fit: cover;
-  border-radius: 8px; margin-top: 10px;
+.journey-detail p {
+  font-size: .82rem; color: rgba(255,255,255,.7); line-height: 1.5;
 }
-.roadmap-card::before {
-  content: ''; position: absolute; top: -7px; left: 50%;
-  width: 14px; height: 14px;
-  background: rgba(14,14,28,.95);
-  border-left: 1px solid rgba(0,255,178,.2);
-  border-top: 1px solid rgba(0,255,178,.2);
-  transform: translateX(-50%) rotate(45deg);
+.journey-detail img {
+  width: 100%; height: 90px; object-fit: cover;
+  border-radius: 6px; margin-top: 10px;
 }
 
-/* Logo text treatments for brands */
-.logo-google { display: flex; gap: 1px; align-items: baseline; }
-.logo-google span { font-weight: 700; font-size: 1.65rem; }
-.logo-text {
-  font-family: 'DM Sans', sans-serif; font-weight: 800;
-  color: #fff; letter-spacing: 1px; text-align: center;
-  line-height: 1.2;
-}
-.logo-qinary-text {
-  font-family: 'DM Sans', sans-serif; font-weight: 800;
-  font-size: 1.35rem; color: #00ffb2; letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(0,255,178,.4);
+/* Center the last stop (Qinary) across full width */
+.journey-stop:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 
-/* Row 2 reversed order for zigzag feel */
-.roadmap-node:nth-child(4) { order: 6; }
-.roadmap-node:nth-child(5) { order: 5; }
-.roadmap-node:nth-child(6) { order: 4; }
+/* Google rainbow text */
+.brand-google span { font-weight: 700; }
+.brand-google .g1 { color: #4285F4; }
+.brand-google .g2 { color: #EA4335; }
+.brand-google .g3 { color: #FBBC05; }
+.brand-google .g4 { color: #4285F4; }
+.brand-google .g5 { color: #34A853; }
+.brand-google .g6 { color: #EA4335; }
 
-/* Row 3 centered */
-.roadmap-node:nth-child(7) {
-  grid-column: 2 / 3;
+/* Tablet: 2-up */
+@media (max-width: 900px) {
+  .journey-timeline { grid-template-columns: repeat(2, 1fr); gap: 0 12px; }
+  .journey-timeline::before { display: none; }
+  .journey-stop { padding-bottom: 36px; }
 }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .roadmap-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 24px; max-width: 360px;
+/* Mobile: single column */
+@media (max-width: 540px) {
+  .journey-timeline {
+    grid-template-columns: 1fr; max-width: 280px;
+    position: relative;
   }
-  .roadmap-path-svg { display: none; }
-  .roadmap-node .node-logo { width: 90px; height: 90px; }
-  .roadmap-node.qinary-node .node-logo { width: 100px; height: 100px; }
-  .roadmap-node .node-logo img { width: 60px; }
-  .roadmap-node .node-label { font-size: .7rem; }
-  .roadmap-node .node-role { display: none; }
-  .roadmap-node .node-step { width: 20px; height: 20px; font-size: .55rem; top: -6px; left: -6px; }
-  .logo-google span { font-size: 1.2rem; }
-  .logo-text { font-size: .85rem !important; }
-  .logo-qinary-text { font-size: 1rem; }
-  .roadmap-card { width: 220px; padding: 14px; }
-  .roadmap-card img { height: 80px; }
-  /* Undo zigzag reorder on mobile */
-  .roadmap-node:nth-child(4) { order: unset; }
-  .roadmap-node:nth-child(5) { order: unset; }
-  .roadmap-node:nth-child(6) { order: unset; }
-  .roadmap-node:nth-child(7) { grid-column: 1 / -1; }
-}
-@media (max-width: 420px) {
-  .roadmap-grid { grid-template-columns: 1fr; max-width: 200px; }
-  .roadmap-node:nth-child(7) { grid-column: auto; }
+  /* Vertical line on mobile */
+  .journey-timeline::before {
+    display: block;
+    top: 0; bottom: 0; left: 16px; right: auto;
+    width: 1px; height: auto;
+    background: linear-gradient(180deg, transparent, rgba(57,255,20,.2) 10%, rgba(57,255,20,.2) 90%, transparent);
+  }
+  .journey-stop {
+    flex-direction: row; text-align: left;
+    align-items: flex-start; gap: 16px;
+    padding: 0 0 32px 0;
+  }
+  .journey-stop::before { flex-shrink: 0; margin-bottom: 0; }
+  .journey-brand { font-size: 1rem; }
+  .journey-detail {
+    position: static; transform: none; opacity: 1;
+    pointer-events: auto; width: auto;
+    background: none; border: none; backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none; padding: 4px 0 0;
+  }
+  .journey-detail img { display: none; }
 }
 
 /* ========== SOCIAL PROOF ========== */
@@ -401,23 +386,23 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   max-width: 800px; margin: 0 auto;
   aspect-ratio: 16/9; border-radius: 16px;
   background: rgba(255,255,255,.03);
-  border: 2px solid rgba(0,255,178,.2);
+  border: 2px solid rgba(57,255,20,.2);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 20px; position: relative; overflow: hidden;
 }
 .play-btn {
   width: 80px; height: 80px; border-radius: 50%;
-  background: rgba(0,255,178,.15); border: 2px solid #00ffb2;
+  background: rgba(57,255,20,.15); border: 2px solid #39ff14;
   display: flex; align-items: center; justify-content: center;
   animation: playPulse 2s ease-in-out infinite;
   transition: background .3s;
 }
-.play-btn:hover { background: rgba(0,255,178,.3); }
+.play-btn:hover { background: rgba(57,255,20,.3); }
 @keyframes playPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,178,.3); }
-  50% { box-shadow: 0 0 0 20px rgba(0,255,178,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,.3); }
+  50% { box-shadow: 0 0 0 20px rgba(57,255,20,0); }
 }
-.play-btn svg { width: 28px; height: 28px; fill: #00ffb2; margin-left: 4px; }
+.play-btn svg { width: 28px; height: 28px; fill: #39ff14; margin-left: 4px; }
 .video-placeholder p { color: rgba(255,255,255,.5); font-size: .95rem; }
 
 /* ========== TOPICS ========== */
@@ -433,13 +418,13 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   overflow: hidden;
 }
 .topic-card:hover {
-  border-color: rgba(0,255,178,.3);
-  box-shadow: 0 8px 32px rgba(0,255,178,.08);
+  border-color: rgba(57,255,20,.3);
+  box-shadow: 0 8px 32px rgba(57,255,20,.08);
   transform: translateY(-2px);
 }
 .topic-card .topic-num {
   font-family: 'DM Sans', sans-serif; font-size: 3rem;
-  font-weight: 800; color: rgba(0,255,178,.12); position: absolute;
+  font-weight: 800; color: rgba(57,255,20,.12); position: absolute;
   top: 16px; right: 24px; line-height: 1;
 }
 .topic-card h3 {
@@ -464,14 +449,14 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 }
 .pricing-card:hover { transform: translateY(-4px); }
 .pricing-card.featured {
-  border-color: rgba(0,255,178,.4);
-  background: rgba(0,255,178,.04);
+  border-color: rgba(57,255,20,.4);
+  background: rgba(57,255,20,.04);
   transform: scale(1.05); position: relative;
 }
 .pricing-card.featured:hover { transform: scale(1.05) translateY(-4px); }
 .popular-badge {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-  background: #00ffb2; color: #08070e; font-size: .7rem; font-weight: 800;
+  background: #39ff14; color: #08070e; font-size: .7rem; font-weight: 800;
   padding: 5px 16px; border-radius: 20px; letter-spacing: 1px;
   text-transform: uppercase; white-space: nowrap;
 }
@@ -486,7 +471,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   font-family: 'DM Sans', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 800; color: #fff; margin-bottom: 24px;
 }
-.pricing-card.featured .pricing-amount { color: #00ffb2; }
+.pricing-card.featured .pricing-amount { color: #39ff14; }
 .pricing-card .btn-outline {
   display: inline-block; padding: 12px 32px; border-radius: 10px;
   border: 1px solid rgba(255,255,255,.15); color: #fff;
@@ -494,13 +479,13 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   text-transform: uppercase; letter-spacing: 1px;
 }
 .pricing-card .btn-outline:hover {
-  border-color: #00ffb2; color: #00ffb2;
+  border-color: #39ff14; color: #39ff14;
 }
 .pricing-card.featured .btn-outline {
-  background: #00ffb2; color: #08070e; border-color: #00ffb2;
+  background: #39ff14; color: #08070e; border-color: #39ff14;
 }
 .pricing-card.featured .btn-outline:hover {
-  background: #00e6a0; box-shadow: 0 4px 20px rgba(0,255,178,.3);
+  background: #00e6a0; box-shadow: 0 4px 20px rgba(57,255,20,.3);
 }
 .pricing-note {
   text-align: center; margin-top: 32px; font-size: .85rem;
@@ -528,7 +513,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   border-top: 1px solid rgba(255,255,255,.06);
   font-size: .8rem; color: rgba(255,255,255,.3);
 }
-.footer a { color: #00ffb2; }
+.footer a { color: #39ff14; }
 </style>
 </head>
 <body>
@@ -581,123 +566,78 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
     <h2 class="section-label">The <span>Journey</span></h2>
     <p class="roadmap-subtitle">Built &amp; sold two agencies &bull; Acquired by WPP &bull; SVP at Wunderman Thompson &bull; $842M+ in results</p>
 
-    <div class="roadmap-grid">
+    <div class="journey-timeline">
 
-      <!-- ROW 1: L → R -->
-      <!-- 1. iHeartRadio -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">1</span>
-          <svg viewBox="0 0 120 60" width="80" xmlns="http://www.w3.org/2000/svg">
-            <path d="M60 8 C60 8 52 3 46 3 C39 3 33 8 33 15 C33 27 60 42 60 42 C60 42 87 27 87 15 C87 8 81 3 74 3 C68 3 60 8 60 8Z" fill="#C6002B"/>
-            <text x="60" y="56" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="10" fill="white" letter-spacing="0.5">iHeartRADIO</text>
-          </svg>
-        </div>
-        <span class="node-label">iHeartRadio</span>
-        <span class="node-role">Syndicated Radio Host</span>
-        <div class="roadmap-card">
-          <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
+      <div class="journey-stop" data-step="1">
+        <div>
+          <div class="journey-brand">iHeartRadio</div>
+          <div class="journey-role">Syndicated Radio Host</div>
+          <div class="journey-detail">
+            <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
+          </div>
         </div>
       </div>
 
-      <!-- 2. Nike -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">2</span>
-          <svg viewBox="0 0 100 40" width="72" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5 30.5c-1 .1-2-.6-1.8-1.5.3-.5 3-2.5 12-7.5 8-5 17.5-10 25-13 7-2.5 14.5-3.5 20-2 .5.2 1 .5 1.3.8-5 3.5-18 10.5-28 15s-20 7.5-24.5 8c-2 .2-3.5.1-4 .2z" fill="white"/>
-          </svg>
-        </div>
-        <span class="node-label">Nike</span>
-        <span class="node-role">Social Strategy</span>
-        <div class="roadmap-card">
-          <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
+      <div class="journey-stop" data-step="2">
+        <div>
+          <div class="journey-brand">Nike</div>
+          <div class="journey-role">Social Strategy</div>
+          <div class="journey-detail">
+            <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
+          </div>
         </div>
       </div>
 
-      <!-- 3. Starbucks -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">3</span>
-          <svg viewBox="0 0 80 80" width="65" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="38" fill="#00704A"/>
-            <circle cx="40" cy="40" r="33" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".75"/>
-            <text x="40" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="6.5" fill="white" letter-spacing="2.5">STARBUCKS</text>
-            <text x="40" y="51" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="5" fill="rgba(255,255,255,.8)" letter-spacing="3">COFFEE</text>
-            <line x1="14" y1="38" x2="27" y2="38" stroke="rgba(255,255,255,.5)" stroke-width=".75"/>
-            <line x1="53" y1="38" x2="66" y2="38" stroke="rgba(255,255,255,.5)" stroke-width=".75"/>
-            <path d="M36 38 L40 42 L44 38" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
-          </svg>
-        </div>
-        <span class="node-label">Starbucks</span>
-        <span class="node-role">Social Strategy</span>
-        <div class="roadmap-card">
-          <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
+      <div class="journey-stop" data-step="3">
+        <div>
+          <div class="journey-brand">Starbucks</div>
+          <div class="journey-role">Social Strategy</div>
+          <div class="journey-detail">
+            <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
+          </div>
         </div>
       </div>
 
-      <!-- ROW 2: R → L (visually reversed via CSS order) -->
-      <!-- 4. Google -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">4</span>
-          <svg viewBox="0 0 120 44" width="78" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="34" font-family="'Product Sans', Arial, sans-serif" font-weight="700" font-size="36">
-              <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan>
-            </text>
-          </svg>
-        </div>
-        <span class="node-label">Google</span>
-        <span class="node-role">Innovation &amp; Platforms</span>
-        <div class="roadmap-card">
-          <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
+      <div class="journey-stop" data-step="4">
+        <div>
+          <div class="journey-brand brand-google"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div>
+          <div class="journey-role">Innovation &amp; Platforms</div>
+          <div class="journey-detail">
+            <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
+          </div>
         </div>
       </div>
 
-      <!-- 5. Cardone Ventures -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">5</span>
-          <svg viewBox="0 0 100 50" width="80" xmlns="http://www.w3.org/2000/svg">
-            <text x="50" y="30" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="32" fill="white" letter-spacing="-1">10X</text>
-            <text x="50" y="44" text-anchor="middle" font-family="Arial, sans-serif" font-weight="400" font-size="7" fill="rgba(255,255,255,.5)" letter-spacing="2">CARDONE</text>
-          </svg>
-        </div>
-        <span class="node-label">Cardone Ventures</span>
-        <span class="node-role">CMO &bull; $62M+ in 2 years</span>
-        <div class="roadmap-card">
-          <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
-          <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
+      <div class="journey-stop" data-step="5">
+        <div>
+          <div class="journey-brand">Cardone Ventures</div>
+          <div class="journey-role">CMO &bull; $62M+ in 2 years</div>
+          <div class="journey-detail">
+            <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
+            <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
+          </div>
         </div>
       </div>
 
-      <!-- 6. SERHANT -->
-      <div class="roadmap-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="node-step">6</span>
-          <svg viewBox="0 0 130 30" width="90" xmlns="http://www.w3.org/2000/svg">
-            <text x="65" y="22" text-anchor="middle" font-family="'DM Sans', Arial, sans-serif" font-weight="700" font-size="17" fill="white" letter-spacing="5">SERHANT.</text>
-          </svg>
-        </div>
-        <span class="node-label">Serhant Ventures</span>
-        <span class="node-role">300% revenue growth</span>
-        <div class="roadmap-card">
-          <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
-          <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
+      <div class="journey-stop" data-step="6">
+        <div>
+          <div class="journey-brand">SERHANT.</div>
+          <div class="journey-role">300% revenue growth</div>
+          <div class="journey-detail">
+            <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
+            <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
+          </div>
         </div>
       </div>
 
-      <!-- ROW 3: Centered -->
-      <!-- 7. QINARY -->
-      <div class="roadmap-node qinary-node" onclick="toggleNode(this)">
-        <div class="node-logo">
-          <span class="now-badge">NOW</span>
-          <span class="logo-qinary-text">QINARY</span>
-        </div>
-        <span class="node-label">Current</span>
-        <span class="node-role">Full-Service Personal Brand Agency</span>
-        <div class="roadmap-card">
-          <p>Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
+      <div class="journey-stop current" data-step="&#10003;">
+        <div>
+          <span class="now-tag">NOW</span>
+          <div class="journey-brand">QINARY</div>
+          <div class="journey-role">Full-Service Personal Brand Agency</div>
+          <div class="journey-detail">
+            <p>Building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
+          </div>
         </div>
       </div>
 
@@ -824,19 +764,6 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 </footer>
 
 <script>
-// Roadmap node toggle (tap on any screen)
-function toggleNode(el) {
-  var wasActive = el.classList.contains('active');
-  document.querySelectorAll('.roadmap-node').forEach(function(n) { n.classList.remove('active'); });
-  if (!wasActive) el.classList.add('active');
-}
-// Close card when tapping outside
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.roadmap-node')) {
-    document.querySelectorAll('.roadmap-node').forEach(function(n) { n.classList.remove('active'); });
-  }
-});
-
 // Close mobile menu on resize to desktop
 window.addEventListener('resize', function() {
   if (window.innerWidth > 768) {
