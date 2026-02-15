@@ -329,6 +329,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 .jcard-logo.logo-google { filter: none; height: 24px; }
 .jcard-logo.logo-10x {
   height: 32px; border-radius: 4px;
+  filter: brightness(1.15);
   mix-blend-mode: screen; /* black bg becomes transparent */
 }
 .jcard-logo.logo-serhant {
@@ -339,12 +340,12 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 .jcard-logo.logo-qinary { height: 26px; }
 .jcard-logo.logo-wpp { filter: brightness(0) invert(1); height: 24px; }
 
-/* iHeartRadio text logo */
-.jcard-iheart {
-  font-family: 'DM Sans', sans-serif; font-weight: 800;
-  font-size: 1.15rem; color: #fff; letter-spacing: -.3px;
+/* iHeartRadio logo — white bg webp, invert + screen to make bg transparent */
+.jcard-logo.logo-iheart {
+  height: 40px;
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
-.jcard-iheart .ih-red { color: #C6002B; }
 
 /* Headshot icon (Cardone, Serhant) */
 .jcard-headshot {
@@ -826,7 +827,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
       <!-- iHeartRadio -->
       <div class="jcard">
         <div class="jcard-top">
-          <span class="jcard-iheart"><span class="ih-red">iHeart</span>Radio</span>
+          <img src="./assets/iHR_primary_Color.webp" alt="iHeartRadio" class="jcard-logo logo-iheart">
         </div>
         <div class="jcard-role">Syndicated Radio Personality</div>
         <div class="jcard-desc">Syndicated radio personality across 82+ markets with highlights in Los Angeles alongside Ryan Seacrest. Built a loyal audience through real conversation, storytelling, and cultural commentary.</div>
