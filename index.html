@@ -46,6 +46,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   color: #fff;
   margin-bottom: 48px;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 .section-label span { color: #39ff14; }
 .accent { color: #39ff14; }
@@ -624,6 +626,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 }
 .contact h2 {
   font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 16px;
+  text-transform: uppercase; letter-spacing: 2px;
 }
 .contact p {
   font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,.55);
@@ -664,179 +667,147 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   .as-seen-stats { gap: 32px; }
 }
 
-/* ========== NEWSLETTER ========== */
-.newsletter { padding: 100px 0; text-align: center; }
-.newsletter-inner {
-  max-width: 560px; margin: 0 auto;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 24px; padding: 56px 40px;
-}
-.newsletter h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem); color: #fff; margin-bottom: 12px;
-}
-.newsletter p {
-  font-size: .95rem; color: rgba(255,255,255,.5);
-  margin-bottom: 32px; line-height: 1.6;
-}
-.newsletter-form {
-  display: flex; gap: 12px; max-width: 440px; margin: 0 auto;
-}
-.newsletter-form input {
-  flex: 1; padding: 14px 20px; border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.1);
-  background: rgba(255,255,255,.05); color: #fff;
-  font-family: 'Inter', sans-serif; font-size: .9rem;
-  outline: none; transition: border-color .3s;
-}
-.newsletter-form input::placeholder { color: rgba(255,255,255,.3); }
-.newsletter-form input:focus { border-color: rgba(57,255,20,.4); }
-.newsletter-form button {
-  padding: 14px 28px; border-radius: 12px;
-  background: #39ff14; color: #08070e;
-  font-weight: 700; font-size: .85rem;
-  text-transform: uppercase; letter-spacing: 1px;
-  transition: transform .2s, box-shadow .2s;
-  white-space: nowrap;
-}
-.newsletter-form button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(57,255,20,.3);
-}
-.newsletter-note {
-  font-size: .7rem; color: rgba(255,255,255,.25);
-  margin-top: 16px;
-}
-@media (max-width: 540px) {
-  .newsletter-inner { padding: 40px 24px; }
-  .newsletter-form { flex-direction: column; }
-  .newsletter-form button { width: 100%; }
-}
-
-/* ========== MEDIA KIT ========== */
+/* ========== MEDIA KIT (Accordion) ========== */
 .media-kit { padding: 120px 0 100px; }
 .mk-intro {
   text-align: center; max-width: 600px; margin: -32px auto 56px;
   font-size: 1rem; color: rgba(255,255,255,.5); line-height: 1.7;
 }
 
-/* Asset gallery — thumbnail grid with download */
-.mk-assets {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; max-width: 1060px; margin: 0 auto;
+/* Accordion container */
+.mk-accordion {
+  max-width: 800px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 8px;
 }
-.mk-asset {
-  position: relative; border-radius: 14px; overflow: hidden;
+.mk-acc-item {
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; overflow: hidden;
+  transition: border-color .3s;
+}
+.mk-acc-item:hover { border-color: rgba(255,255,255,.12); }
+.mk-acc-item.open { border-color: rgba(57,255,20,.2); }
+
+/* Accordion header (clickable) */
+.mk-acc-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; cursor: pointer; user-select: none;
+  background: none; width: 100%; color: #fff; border: none;
+  font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600;
+  text-align: left; letter-spacing: .3px;
+}
+.mk-acc-header:hover { background: rgba(255,255,255,.02); }
+.mk-acc-left { display: flex; align-items: center; gap: 14px; }
+.mk-acc-icon { font-size: 1.2rem; }
+.mk-acc-count {
+  font-size: .6rem; font-weight: 700; color: rgba(255,255,255,.35);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.mk-acc-arrow {
+  width: 20px; height: 20px; fill: rgba(255,255,255,.3);
+  transition: transform .3s, fill .3s; flex-shrink: 0;
+}
+.mk-acc-item.open .mk-acc-arrow {
+  transform: rotate(180deg); fill: #39ff14;
+}
+
+/* Accordion body */
+.mk-acc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.mk-acc-body-inner { padding: 0 24px 24px; }
+
+/* Asset grid inside accordion */
+.mk-assets {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.mk-asset {
+  position: relative; border-radius: 10px; overflow: hidden;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
   transition: border-color .3s, transform .3s;
-  cursor: pointer;
+  cursor: pointer; display: block;
 }
 .mk-asset:hover {
   border-color: rgba(57,255,20,.25);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 .mk-asset img, .mk-asset video {
-  width: 100%; height: 180px; object-fit: cover; display: block;
+  width: 100%; height: 140px; object-fit: cover; display: block;
 }
 .mk-asset-info {
-  padding: 14px 16px; display: flex; align-items: center;
-  justify-content: space-between; gap: 8px;
+  padding: 10px 12px; display: flex; align-items: center;
+  justify-content: space-between; gap: 6px;
 }
 .mk-asset-name {
-  font-size: .75rem; color: rgba(255,255,255,.6);
+  font-size: .7rem; color: rgba(255,255,255,.6);
   font-weight: 500; white-space: nowrap; overflow: hidden;
   text-overflow: ellipsis;
 }
 .mk-asset-tag {
-  font-size: .55rem; font-weight: 700; color: #39ff14;
+  font-size: .5rem; font-weight: 700; color: #39ff14;
   text-transform: uppercase; letter-spacing: 1px;
-  padding: 3px 8px; border-radius: 4px;
+  padding: 2px 6px; border-radius: 3px;
   background: rgba(57,255,20,.08); border: 1px solid rgba(57,255,20,.15);
   white-space: nowrap; flex-shrink: 0;
 }
 .mk-asset-dl {
-  position: absolute; top: 12px; right: 12px;
-  width: 32px; height: 32px; border-radius: 8px;
+  position: absolute; top: 8px; right: 8px;
+  width: 28px; height: 28px; border-radius: 6px;
   background: rgba(8,7,14,.7); backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity .3s;
   border: 1px solid rgba(255,255,255,.1);
 }
 .mk-asset:hover .mk-asset-dl { opacity: 1; }
-.mk-asset-dl svg { width: 14px; height: 14px; fill: #39ff14; }
+.mk-asset-dl svg { width: 12px; height: 12px; fill: #39ff14; }
 
-/* Info cards row */
-.mk-info-row {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 20px; max-width: 1060px; margin: 32px auto 0;
-}
-.mk-info-card {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px; padding: 28px;
-  transition: border-color .3s, transform .3s;
-}
-.mk-info-card:hover {
-  border-color: rgba(57,255,20,.2);
-  transform: translateY(-2px);
-}
-.mk-info-card h3 {
-  font-size: .95rem; color: #fff; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.mk-info-card h3 span { font-size: 1.2rem; }
-.mk-info-card ul {
+/* Info list inside accordion */
+.mk-acc-list {
   list-style: none; padding: 0; margin: 0;
 }
-.mk-info-card ul li {
-  font-size: .8rem; color: rgba(255,255,255,.5); padding: 5px 0;
+.mk-acc-list li {
+  font-size: .85rem; color: rgba(255,255,255,.55); padding: 8px 0;
   border-bottom: 1px solid rgba(255,255,255,.04);
+  display: flex; align-items: flex-start; gap: 10px;
 }
-.mk-info-card ul li::before {
+.mk-acc-list li::before {
   content: ''; display: inline-block; width: 4px; height: 4px;
-  border-radius: 50%; background: #39ff14; margin-right: 10px;
-  vertical-align: middle;
+  border-radius: 50%; background: #39ff14; margin-top: 8px;
+  flex-shrink: 0;
 }
+.mk-acc-list li:last-child { border-bottom: none; }
 
-/* Bio boxes */
-.mk-bios {
-  max-width: 1060px; margin: 32px auto 0;
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+/* Bio inside accordion */
+.mk-acc-bio { margin-bottom: 24px; }
+.mk-acc-bio:last-child { margin-bottom: 0; }
+.mk-acc-bio-label {
+  font-size: .6rem; font-weight: 700; color: #39ff14;
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
 }
-.mk-bio-card {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px; padding: 28px;
+.mk-acc-bio-text {
+  font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.7;
   position: relative;
 }
-.mk-bio-label {
-  font-size: .65rem; font-weight: 700; color: #39ff14;
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
-}
-.mk-bio-text {
-  font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.7;
-}
-.mk-bio-copy {
-  position: absolute; top: 16px; right: 16px;
+.mk-acc-bio-copy {
+  display: inline-block; margin-top: 8px;
   background: rgba(57,255,20,.08); border: 1px solid rgba(57,255,20,.2);
-  border-radius: 6px; padding: 4px 10px;
+  border-radius: 6px; padding: 4px 12px;
   font-size: .6rem; font-weight: 700; color: #39ff14;
   text-transform: uppercase; letter-spacing: 1px;
   cursor: pointer; transition: background .3s;
 }
-.mk-bio-copy:hover { background: rgba(57,255,20,.15); }
+.mk-acc-bio-copy:hover { background: rgba(57,255,20,.15); }
 
-@media (max-width: 900px) {
-  .mk-assets { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 768px) {
   .mk-assets { grid-template-columns: repeat(2, 1fr); }
-  .mk-info-row { grid-template-columns: 1fr; max-width: 400px; margin: 32px auto 0; }
-  .mk-bios { grid-template-columns: 1fr; max-width: 400px; margin: 32px auto 0; }
 }
 @media (max-width: 480px) {
-  .mk-assets { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .mk-assets { grid-template-columns: 1fr; }
+  .mk-acc-header { padding: 16px 18px; font-size: .85rem; }
+  .mk-acc-body-inner { padding: 0 18px 18px; }
 }
 
 /* ========== FOOTER ========== */
@@ -887,7 +858,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#media-kit">Media Kit</a></li>
     </ul>
-    <a href="mailto:buck@qinary.com" class="nav-cta">Book Buck</a>
+    <a href="#" onclick="openBookingEmail(event)" class="nav-cta">Book Buck</a>
     <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -900,7 +871,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   <a href="#topics" onclick="this.parentElement.classList.remove('open')">Topics</a>
   <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
   <a href="#media-kit" onclick="this.parentElement.classList.remove('open')">Media Kit</a>
-  <a href="mailto:buck@qinary.com" class="btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="this.parentElement.classList.remove('open')">Book Buck</a>
+  <a href="#" class="btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="this.parentElement.classList.remove('open');openBookingEmail(event);">Book Buck</a>
 </div>
 
 <!-- ========== HERO (Tony Robbins-style composite) ========== -->
@@ -924,7 +895,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
       <h1 class="hero-h1"><span class="hero-name-accent">Buck Wise</span></h1>
       <p class="hero-subtitle">Entrepreneur. Speaker. Brand Architect.</p>
       <p class="hero-tagline">$842M+ in results. Building brands that get discovered everywhere.</p>
-      <a href="mailto:buck@qinary.com" class="btn-primary">Book Buck</a>
+      <a href="#" onclick="openBookingEmail(event)" class="btn-primary">Book Buck</a>
     </div>
   </div>
   <!-- Layer 6: Video thumbnail card (bottom-right) -->
@@ -1061,7 +1032,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 <!-- ========== SOCIAL PROOF ========== -->
 <section class="social-proof" id="proof">
   <div class="container">
-    <h2 class="section-label">In Good <span>Company</span></h2>
+    <h2 class="section-label">Good <span>Company</span></h2>
     <div class="proof-grid">
       <div class="proof-card">
         <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone">
@@ -1145,7 +1116,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 <!-- ========== TOPICS ========== -->
 <section class="topics" id="topics">
   <div class="container">
-    <h2 class="section-label">Speaking <span>Topics</span></h2>
+    <h2 class="section-label"><span>Topics</span></h2>
     <div class="topics-grid">
       <div class="topic-card">
         <span class="topic-num">01</span>
@@ -1180,167 +1151,201 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
         <div class="pricing-type">Virtual</div>
         <p class="pricing-desc">One-Hour Zoom Session + Q&amp;A</p>
         <div class="pricing-amount">$5,000</div>
-        <a href="mailto:buck@qinary.com" class="btn-outline">Reserve Your Date</a>
+        <a href="#" onclick="openBookingEmail(event)" class="btn-outline">Reserve Your Date</a>
       </div>
       <div class="pricing-card featured">
         <span class="popular-badge">Most Popular</span>
         <div class="pricing-type">United States <span style="font-size:.65rem;opacity:.6;letter-spacing:1px">(MAINLAND)</span></div>
         <p class="pricing-desc">One-Hour Keynote Presentation + Q&amp;A</p>
         <div class="pricing-amount">$10,000</div>
-        <a href="mailto:buck@qinary.com" class="btn-outline">Reserve Your Date</a>
+        <a href="#" onclick="openBookingEmail(event)" class="btn-outline">Reserve Your Date</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-type">International</div>
         <p class="pricing-desc">One-Hour Keynote Presentation + Q&amp;A + Private Dinner</p>
         <div class="pricing-amount">$20,000</div>
-        <a href="mailto:buck@qinary.com" class="btn-outline">Reserve Your Date</a>
+        <a href="#" onclick="openBookingEmail(event)" class="btn-outline">Reserve Your Date</a>
       </div>
     </div>
     <p class="pricing-note">Keynote fees include presentation. Travel and accommodations billed separately.</p>
   </div>
 </section>
 
-<!-- ========== NEWSLETTER ========== -->
-<section class="newsletter" id="newsletter">
-  <div class="container">
-    <div class="newsletter-inner">
-      <h2>Stay in the <span class="accent">Loop</span></h2>
-      <p>Branding tips, speaking updates, and real strategies that drive revenue. No spam, just signal.</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector('input');if(e.value){this.innerHTML='<p style=\'color:#39ff14;font-weight:600;font-size:1rem;\'>You\'re in. Welcome to the list.</p>';}" >
-        <input type="email" placeholder="Enter your email" required>
-        <button type="submit">Subscribe</button>
-      </form>
-      <p class="newsletter-note">Join thousands of founders and executives. Unsubscribe anytime.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ========== MEDIA KIT ========== -->
+<!-- ========== MEDIA KIT (Accordion) ========== -->
 <section class="media-kit" id="media-kit">
   <div class="container">
     <h2 class="section-label">Media <span>Kit</span></h2>
-    <p class="mk-intro">Everything event planners and media need to promote Buck Wise. Download approved headshots, videos, bios, and event details below.</p>
+    <p class="mk-intro">Everything event planners and media need to promote Buck Wise. Click to expand and download approved assets.</p>
 
-    <!-- Downloadable Asset Gallery -->
-    <div class="mk-assets">
-      <!-- Headshot 1 -->
-      <a href="./assets/Full Bleed Hero.jpg" download class="mk-asset">
-        <img src="./assets/Full Bleed Hero.jpg" alt="Stage Photo">
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Stage Photo</span>
-          <span class="mk-asset-tag">Photo</span>
+    <div class="mk-accordion">
+
+      <!-- 1. Headshots & Photos -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">📸</span>
+            <span>Headshots &amp; Photos</span>
+            <span class="mk-acc-count">4 files</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <div class="mk-assets">
+              <a href="./assets/Full Bleed Hero.jpg" download class="mk-asset">
+                <img src="./assets/Full Bleed Hero.jpg" alt="Stage Photo">
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Stage Photo</span><span class="mk-asset-tag">JPG</span></div>
+              </a>
+              <a href="./assets/hero-cutout.png" download class="mk-asset">
+                <img src="./assets/hero-cutout.png" alt="Cutout" style="object-position:top;background:linear-gradient(135deg,#1a1a2e,#08070e);">
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Cutout (Transparent BG)</span><span class="mk-asset-tag">PNG</span></div>
+              </a>
+              <a href="./assets/Buck Speaking Dubai_Huspy.3.jpg" download class="mk-asset">
+                <img src="./assets/Buck Speaking Dubai_Huspy.3.jpg" alt="Dubai Keynote">
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Dubai Keynote</span><span class="mk-asset-tag">JPG</span></div>
+              </a>
+              <a href="./assets/buck_levelup.jpg" download class="mk-asset">
+                <img src="./assets/buck_levelup.jpg" alt="Level Up Conference">
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Level Up Conference</span><span class="mk-asset-tag">JPG</span></div>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-      <!-- Headshot 2 -->
-      <a href="./assets/hero-cutout.png" download class="mk-asset">
-        <img src="./assets/hero-cutout.png" alt="Cutout (Transparent BG)" style="object-position: top center; background: linear-gradient(135deg, #1a1a2e, #08070e);">
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Cutout (Transparent BG)</span>
-          <span class="mk-asset-tag">PNG</span>
+      </div>
+
+      <!-- 2. Videos -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">🎬</span>
+            <span>Videos</span>
+            <span class="mk-acc-count">2 files</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <div class="mk-assets" style="grid-template-columns: repeat(2, 1fr);">
+              <a href="./assets/Buck Wise.mp4" download class="mk-asset">
+                <video muted poster="./assets/Full Bleed Hero.jpg" style="pointer-events:none;"><source src="./assets/Buck Wise.mp4" type="video/mp4"></video>
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Speaker Highlight Reel</span><span class="mk-asset-tag">MP4</span></div>
+              </a>
+              <a href="./assets/walkout-loop.mp4" download class="mk-asset">
+                <video muted poster="./assets/buck_levelup.jpg" style="pointer-events:none;"><source src="./assets/walkout-loop.mp4" type="video/mp4"></video>
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Walkout Entrance</span><span class="mk-asset-tag">MP4</span></div>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-      <!-- Headshot 3 -->
-      <a href="./assets/Buck Speaking Dubai_Huspy.3.jpg" download class="mk-asset">
-        <img src="./assets/Buck Speaking Dubai_Huspy.3.jpg" alt="Dubai Keynote">
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Dubai Keynote</span>
-          <span class="mk-asset-tag">Photo</span>
+      </div>
+
+      <!-- 3. Logos -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">✦</span>
+            <span>Logos</span>
+            <span class="mk-acc-count">2 files</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <div class="mk-assets" style="grid-template-columns: repeat(2, 1fr);">
+              <a href="./assets/Qinary Logo.png" download class="mk-asset">
+                <div style="width:100%;height:140px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);"><img src="./assets/Qinary Logo.png" alt="Qinary Logo" style="height:36px;width:auto;max-width:80%;object-fit:contain;"></div>
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Qinary Wordmark</span><span class="mk-asset-tag">PNG</span></div>
+              </a>
+              <a href="./assets/Qinary Icon.png" download class="mk-asset">
+                <div style="width:100%;height:140px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);"><img src="./assets/Qinary Icon.png" alt="Qinary Icon" style="height:50px;width:auto;object-fit:contain;"></div>
+                <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
+                <div class="mk-asset-info"><span class="mk-asset-name">Qinary Icon</span><span class="mk-asset-tag">PNG</span></div>
+              </a>
+            </div>
+          </div>
         </div>
-      </a>
-      <!-- Headshot 4 -->
-      <a href="./assets/buck_levelup.jpg" download class="mk-asset">
-        <img src="./assets/buck_levelup.jpg" alt="Level Up Conference">
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Level Up Conference</span>
-          <span class="mk-asset-tag">Photo</span>
+      </div>
+
+      <!-- 4. Approved Bios -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">📝</span>
+            <span>Approved Bios</span>
+            <span class="mk-acc-count">Short + Full</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <div class="mk-acc-bio">
+              <div class="mk-acc-bio-label">Short Bio</div>
+              <p class="mk-acc-bio-text">Buck Wise is an entrepreneur, speaker, and brand architect who has driven $842M+ in marketing results for Nike, Starbucks, Google, Grant Cardone, and Ryan Serhant. He is the Founder and CEO of Qinary, a full-service personal brand agency. Buck speaks on personal branding, revenue growth, and AI optimization.</p>
+              <button class="mk-acc-bio-copy" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent.trim());this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Bio',2000);">Copy Bio</button>
+            </div>
+            <div class="mk-acc-bio">
+              <div class="mk-acc-bio-label">Full Bio</div>
+              <p class="mk-acc-bio-text">Buck Wise has spent two decades at the intersection of branding, media, and revenue. He built and sold two agencies (acquired by WPP), served as SVP at Wunderman Thompson running Fortune 500 campaigns, held the CMO role at Grant Cardone Ventures where he built a marketing engine that drove $62M+ in revenue in under two years, and led brand and revenue strategy for Ryan Serhant's ventures, delivering 300% revenue growth. His resume includes social strategy for Nike Running, Nike Golf, and Nike Women, campaign strategy for Starbucks, innovation work with Google, and 82+ market syndicated radio alongside Ryan Seacrest on iHeartRadio. Today, as Founder and CEO of Qinary, Buck builds personal brands for founders, executives, and public figures across social, content, PR, and AI search optimization. He speaks on turning personal brand into revenue, the authority formula, data-driven growth, and becoming the expert that AI recommends.</p>
+              <button class="mk-acc-bio-copy" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent.trim());this.textContent='Copied!';setTimeout(()=>this.textContent='Copy Bio',2000);">Copy Bio</button>
+            </div>
+          </div>
         </div>
-      </a>
-      <!-- Video 1 -->
-      <a href="./assets/Buck Wise.mp4" download class="mk-asset">
-        <video muted poster="./assets/Full Bleed Hero.jpg" style="pointer-events:none;">
-          <source src="./assets/Buck Wise.mp4" type="video/mp4">
-        </video>
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Speaker Highlight Reel</span>
-          <span class="mk-asset-tag">Video</span>
+      </div>
+
+      <!-- 5. Travel & Tech Rider -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">✈️</span>
+            <span>Travel &amp; Tech Rider</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <ul class="mk-acc-list">
+              <li>First class or business class airfare</li>
+              <li>4-star hotel minimum (1 night before event)</li>
+              <li>Lavalier wireless mic preferred</li>
+              <li>Confidence monitor with presentation</li>
+              <li>Stage-left entrance when possible</li>
+              <li>Green room 1 hour before stage time</li>
+            </ul>
+          </div>
         </div>
-      </a>
-      <!-- Video 2 -->
-      <a href="./assets/walkout-loop.mp4" download class="mk-asset">
-        <video muted poster="./assets/buck_levelup.jpg" style="pointer-events:none;">
-          <source src="./assets/walkout-loop.mp4" type="video/mp4">
-        </video>
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Walkout Entrance</span>
-          <span class="mk-asset-tag">Video</span>
+      </div>
+
+      <!-- 6. Event Planner Info -->
+      <div class="mk-acc-item">
+        <button class="mk-acc-header" onclick="toggleAccordion(this)">
+          <div class="mk-acc-left">
+            <span class="mk-acc-icon">📋</span>
+            <span>Event Planner Info</span>
+          </div>
+          <svg class="mk-acc-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="mk-acc-body">
+          <div class="mk-acc-body-inner">
+            <ul class="mk-acc-list">
+              <li>Book 30+ days in advance</li>
+              <li>50% deposit to reserve date</li>
+              <li>Custom keynote tailored to your audience</li>
+              <li>Pre-event call with your team included</li>
+              <li>Meet &amp; greet or VIP dinner available</li>
+              <li>Travel + accommodations billed separately</li>
+            </ul>
+          </div>
         </div>
-      </a>
-      <!-- Logo 1 -->
-      <a href="./assets/Qinary Logo.png" download class="mk-asset">
-        <div style="width:100%;height:180px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);"><img src="./assets/Qinary Logo.png" alt="Qinary Logo" style="height:40px;width:auto;max-width:80%;object-fit:contain;"></div>
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Qinary Logo</span>
-          <span class="mk-asset-tag">Logo</span>
-        </div>
-      </a>
-      <!-- Logo 2 -->
-      <a href="./assets/Qinary Icon.png" download class="mk-asset">
-        <div style="width:100%;height:180px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);"><img src="./assets/Qinary Icon.png" alt="Qinary Icon" style="height:60px;width:auto;object-fit:contain;"></div>
-        <div class="mk-asset-dl"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div>
-        <div class="mk-asset-info">
-          <span class="mk-asset-name">Qinary Icon</span>
-          <span class="mk-asset-tag">Logo</span>
-        </div>
-      </a>
+      </div>
+
     </div>
-
-    <!-- Travel Rider + Event Planner Info -->
-    <div class="mk-info-row">
-      <div class="mk-info-card">
-        <h3><span>✈️</span> Travel &amp; Tech Rider</h3>
-        <ul>
-          <li>First class or business class airfare</li>
-          <li>4-star hotel minimum (1 night before event)</li>
-          <li>Lavalier wireless mic preferred</li>
-          <li>Confidence monitor with presentation</li>
-          <li>Stage-left entrance when possible</li>
-          <li>Green room 1 hour before stage time</li>
-        </ul>
-      </div>
-      <div class="mk-info-card">
-        <h3><span>📋</span> Event Planner Info</h3>
-        <ul>
-          <li>Book 30+ days in advance</li>
-          <li>50% deposit to reserve date</li>
-          <li>Custom keynote tailored to your audience</li>
-          <li>Pre-event call with your team included</li>
-          <li>Meet &amp; greet or VIP dinner available</li>
-          <li>Travel + accommodations billed separately</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Approved Bios with copy button -->
-    <div class="mk-bios">
-      <div class="mk-bio-card">
-        <button class="mk-bio-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.nextElementSibling.textContent.trim());this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000);">Copy</button>
-        <div class="mk-bio-label">Short Bio</div>
-        <p class="mk-bio-text">Buck Wise is an entrepreneur, speaker, and brand architect who has driven $842M+ in marketing results for Nike, Starbucks, Google, Grant Cardone, and Ryan Serhant. He is the Founder and CEO of Qinary, a full-service personal brand agency. Buck speaks on personal branding, revenue growth, and AI optimization.</p>
-      </div>
-      <div class="mk-bio-card">
-        <button class="mk-bio-copy" onclick="navigator.clipboard.writeText(this.nextElementSibling.nextElementSibling.textContent.trim());this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000);">Copy</button>
-        <div class="mk-bio-label">Full Bio</div>
-        <p class="mk-bio-text">Buck Wise has spent two decades at the intersection of branding, media, and revenue. He built and sold two agencies (acquired by WPP), served as SVP at Wunderman Thompson running Fortune 500 campaigns, held the CMO role at Grant Cardone Ventures where he built a marketing engine that drove $62M+ in revenue in under two years, and led brand and revenue strategy for Ryan Serhant's ventures, delivering 300% revenue growth. His resume includes social strategy for Nike Running, Nike Golf, and Nike Women, campaign strategy for Starbucks, innovation work with Google, and 82+ market syndicated radio alongside Ryan Seacrest on iHeartRadio. Today, as Founder and CEO of Qinary, Buck builds personal brands for founders, executives, and public figures across social, content, PR, and AI search optimization. He speaks on turning personal brand into revenue, the authority formula, data-driven growth, and becoming the expert that AI recommends.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1349,7 +1354,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   <div class="container">
     <h2><strong>Book Buck For Your <span class="accent">Next Event</span></strong></h2>
     <p>Guaranteed 20% increase in actionable brand building results from stage to solution.</p>
-    <a href="mailto:buck@qinary.com" class="btn-primary">Reserve Your Date</a>
+    <a href="#" onclick="openBookingEmail(event)" class="btn-primary">Reserve Your Date</a>
   </div>
 </section>
 
@@ -1378,6 +1383,7 @@ window.addEventListener('resize', function() {
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {
   a.addEventListener('click', function(e) {
     var href = a.getAttribute('href');
+    if (href === '#') return; // skip booking buttons
     var target = document.querySelector(href);
     if (target) {
       e.preventDefault();
@@ -1386,6 +1392,40 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     }
   });
 });
+
+// Media Kit accordion toggle
+function toggleAccordion(btn) {
+  var item = btn.parentElement;
+  var body = btn.nextElementSibling;
+  var isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    body.style.maxHeight = '0';
+    item.classList.remove('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    item.classList.add('open');
+  }
+}
+
+// Pre-filled booking email
+function openBookingEmail(e) {
+  if (e) e.preventDefault();
+  var subject = encodeURIComponent('Speaking Inquiry — Buck Wise');
+  var body = encodeURIComponent(
+    'Hi Buck,\n\n' +
+    'I\'d like to book you for an upcoming event. Here are the details:\n\n' +
+    'NAME: \n' +
+    'PHONE: \n' +
+    'EMAIL: \n' +
+    'DATE OF EVENT: \n' +
+    'BUDGET: \n' +
+    'EVENT THEME / STRATEGY:\n\n\n' +
+    '---\n' +
+    'Looking forward to hearing from you.\n'
+  );
+  window.location.href = 'mailto:buck@qinary.com?subject=' + subject + '&body=' + body;
+}
 
 // Subtle entrance animations on scroll
 var observer = new IntersectionObserver(function(entries) {
@@ -1397,7 +1437,7 @@ var observer = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.proof-card, .topic-card, .pricing-card, .gallery-item, .jcard, .video-card, .mk-asset, .mk-info-card, .mk-bio-card, .as-seen-stat, .newsletter-inner').forEach(function(el) {
+document.querySelectorAll('.proof-card, .topic-card, .pricing-card, .gallery-item, .jcard, .video-card, .mk-acc-item, .as-seen-stat').forEach(function(el) {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity .6s ease, transform .6s ease, border-color .3s, box-shadow .3s';
