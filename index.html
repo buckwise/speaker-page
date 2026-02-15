@@ -643,12 +643,18 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   display: flex; align-items: center; justify-content: center;
   gap: 56px; flex-wrap: wrap;
 }
-.as-seen-logos svg {
-  height: 22px; width: auto;
-  fill: rgba(255,255,255,.3);
-  transition: fill .3s;
+.as-seen-logos img {
+  height: 32px; width: auto;
+  opacity: .5; transition: opacity .3s;
 }
-.as-seen-logos svg:hover { fill: rgba(255,255,255,.55); }
+.as-seen-logos img:hover { opacity: .8; }
+.as-seen-logos .logo-forbes {
+  height: 28px;
+  mix-blend-mode: screen; /* black bg becomes transparent */
+}
+.as-seen-logos .logo-inc {
+  height: 52px;
+}
 .as-seen-stats {
   display: flex; justify-content: center; gap: 64px;
   margin-top: 48px; flex-wrap: wrap;
@@ -916,10 +922,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   <div class="container">
     <div class="as-seen-label">As Featured In</div>
     <div class="as-seen-logos">
-      <!-- Forbes -->
-      <svg viewBox="0 0 200 54" xmlns="http://www.w3.org/2000/svg"><path d="M34.6 4.3h27.4v8.2H44.3v9.6h15.8v8H44.3v16.8h-9.7V4.3zm35.8 21c0-13 8.8-21.8 21.4-21.8 12.6 0 21.2 8.8 21.2 21.8 0 13-8.6 21.8-21.2 21.8-12.6 0-21.4-8.8-21.4-21.8zm32.6 0c0-8.4-4.6-13.8-11.2-13.8-6.6 0-11.4 5.4-11.4 13.8 0 8.4 4.8 13.8 11.4 13.8 6.6 0 11.2-5.4 11.2-13.8zM121 4.3h16.2c10.2 0 17 5.2 17 14.2 0 7-4 12-10.4 13.8l12.2 14.6h-11.4L134 33.3h-3.3v13.6H121V4.3zm15.4 21.6c5 0 8-2.8 8-7.4 0-4.6-3-7.2-8-7.2h-5.7v14.6h5.7zM161 4.3h17.2c9.4 0 15.4 4.8 15.4 12.8 0 5.4-3 9.8-8 11.8 0 0 2 1.2 3.6 4l8 14h-10.8l-7.2-12.6c-1-1.8-2-2.4-4-2.4h-4.5v15h-9.7V4.3zm16.2 20c4.6 0 7-2.6 7-6.6 0-4-2.4-6-7-6h-6.5V24.3h6.5zM1 4.3h27.4v8.2H10.7v9.6h15.8v8H10.7v16.8H1V4.3z"/></svg>
-      <!-- Inc. -->
-      <svg viewBox="0 0 120 54" xmlns="http://www.w3.org/2000/svg"><path d="M2 4h11v43H2V4zm20 0h11l14 28V4h10v43H47L33 19v28H23V4zm40 21.5C62 12 70.5 3 83 3c7 0 12.5 2.5 16.5 7l-7 7c-2.5-3-5.5-4.5-9.5-4.5-7 0-12 5.5-12 13s5 13 12 13c4 0 7-1.5 9.5-4.5l7 7c-4 4.5-9.5 7-16.5 7-12.5 0-21-9-21-22.5zm36-22h3v3.5h-3V3.5z"/></svg>
+      <img src="./assets/Forbes-Emblem.png" alt="Forbes" class="logo-forbes">
+      <img src="./assets/Inc5000_Medallion_Color-adj.webp" alt="Inc. 5000" class="logo-inc">
     </div>
     <div class="as-seen-stats">
       <div class="as-seen-stat">
