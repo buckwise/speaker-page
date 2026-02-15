@@ -105,58 +105,176 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   .hamburger { display: flex; }
 }
 
-/* ========== HERO (video background) ========== */
+/* ========== HERO (Tony Robbins-style layered composite) ========== */
 .hero {
-  position: relative; min-height: 100vh; display: flex; align-items: center;
-  overflow: hidden; padding-top: 64px;
+  position: relative; min-height: 100vh; overflow: hidden; padding-top: 64px;
 }
-.hero-video {
+
+/* Layer 1: Crowd background image */
+.hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  width: 100%; height: 100%; object-fit: cover;
+  background: url('./assets/buck_levelup.jpg') center 30% / cover no-repeat;
 }
-.hero-overlay {
+
+/* Layer 2: Green cinematic color wash — the "production" filter */
+.hero-tint {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg, rgba(8,7,14,.92) 0%, rgba(8,7,14,.7) 50%, rgba(8,7,14,.4) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(8, 20, 6, .55) 0%,
+    rgba(20, 80, 10, .45) 30%,
+    rgba(57, 255, 20, .18) 60%,
+    rgba(8, 7, 14, .6) 100%
+  );
+  mix-blend-mode: normal;
 }
-.hero-inner {
-  position: relative; z-index: 2;
+/* Adds the green hue shift to the crowd photo */
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(57, 255, 20, .12);
+  mix-blend-mode: color;
+}
+
+/* Layer 3: Bottom gradient so text is readable */
+.hero-fade {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(
+    0deg,
+    rgba(8,7,14,.92) 0%,
+    rgba(8,7,14,.6) 30%,
+    rgba(8,7,14,.15) 55%,
+    transparent 75%
+  );
+}
+
+/* Layer 4: Left side gradient for text readability */
+.hero-fade-left {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(8,7,14,.7) 0%,
+    rgba(8,7,14,.3) 25%,
+    transparent 50%
+  );
+}
+
+/* Layer 5: Cutout figure — center-right like Tony */
+.hero-cutout {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-30%);
+  z-index: 3; height: 88vh; width: auto;
+  max-height: 900px;
+  filter: drop-shadow(0 0 60px rgba(57,255,20,.15)) drop-shadow(0 4px 30px rgba(0,0,0,.5));
+}
+
+/* Layer 6: Content container */
+.hero-content {
+  position: relative; z-index: 5;
   max-width: 1184px; margin: 0 auto; padding: 0 24px;
-  display: flex; align-items: center;
-  width: 100%; min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-bottom: 80px;
 }
-.hero-text { max-width: 560px; }
+
+/* Text block — bottom-left like Tony */
+.hero-text { max-width: 520px; }
 .hero-h1 {
-  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
   font-weight: 800; letter-spacing: -2px;
-  background: linear-gradient(135deg, #ffffff 30%, #39ff14 100%);
+  color: #fff; line-height: 1.0; margin-bottom: 20px;
+}
+.hero-h1 .hero-name-accent {
+  display: block;
+  background: linear-gradient(135deg, #ffffff 40%, #39ff14 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; line-height: 1.05; margin-bottom: 20px;
+  background-clip: text;
 }
 .hero-subtitle {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 500; color: rgba(255,255,255,.85);
-  margin-bottom: 16px; letter-spacing: .5px;
+  margin-bottom: 12px; letter-spacing: .5px;
 }
 .hero-tagline {
-  font-size: clamp(.95rem, 1.8vw, 1.15rem);
-  color: rgba(255,255,255,.6); max-width: 440px;
-  margin-bottom: 36px; line-height: 1.6;
+  font-size: clamp(.9rem, 1.6vw, 1.1rem);
+  color: rgba(255,255,255,.55); max-width: 400px;
+  margin-bottom: 32px; line-height: 1.6;
 }
 .btn-primary {
   display: inline-block; background: #39ff14; color: #08070e;
   font-weight: 700; font-size: 1rem; padding: 16px 40px;
-  border-radius: 12px; transition: transform .25s, box-shadow .25s;
+  border-radius: 50px; transition: transform .25s, box-shadow .25s;
   letter-spacing: 1.5px; text-transform: uppercase;
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(57,255,20,.35); }
 
+/* Video thumbnail — bottom-right like Tony's "Watch" card */
+.hero-video-card {
+  position: absolute; bottom: 80px; right: 24px; z-index: 6;
+  width: 300px; border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 16px 48px rgba(0,0,0,.6);
+  cursor: pointer; transition: transform .3s, box-shadow .3s;
+}
+.hero-video-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,0,0,.7);
+}
+.hero-video-card video {
+  width: 100%; height: 170px; object-fit: cover; display: block;
+}
+.hero-video-card .card-label {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px;
+  background: rgba(8,7,14,.9); backdrop-filter: blur(12px);
+}
+.hero-video-card .card-label .play-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #39ff14; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-video-card .card-label .play-icon svg {
+  width: 14px; height: 14px; fill: #08070e; margin-left: 2px;
+}
+.hero-video-card .card-label span {
+  font-size: .85rem; font-weight: 600; color: #fff; letter-spacing: .5px;
+}
+.hero-vc-tag {
+  font-size: .6rem; color: rgba(255,255,255,.4); text-transform: uppercase;
+  letter-spacing: 1.5px; font-weight: 700; margin-bottom: 6px;
+  position: absolute; bottom: calc(100%); right: 0;
+  padding: 6px 0;
+}
+.hero-vc-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: #39ff14; margin-right: 6px; vertical-align: middle;
+}
+
+/* MOBILE hero adjustments */
+@media (max-width: 900px) {
+  .hero-cutout {
+    left: 50%; transform: translateX(-50%);
+    height: 65vh; max-height: 600px;
+  }
+  .hero-video-card { display: none; }
+}
 @media (max-width: 768px) {
-  .hero-inner { padding-top: 40px; }
-  .hero-text { text-align: center; margin: 0 auto; }
+  .hero-content {
+    padding-bottom: 60px; text-align: center;
+    align-items: center;
+  }
+  .hero-text { text-align: center; }
   .hero-tagline { margin-left: auto; margin-right: auto; }
-  .hero-overlay {
-    background: linear-gradient(180deg, rgba(8,7,14,.85) 0%, rgba(8,7,14,.7) 50%, rgba(8,7,14,.5) 100%);
+  .hero-cutout {
+    height: 55vh; max-height: 500px; opacity: .6;
+  }
+  .hero-fade {
+    background: linear-gradient(
+      0deg,
+      rgba(8,7,14,.95) 0%,
+      rgba(8,7,14,.7) 35%,
+      rgba(8,7,14,.2) 60%,
+      transparent 80%
+    );
   }
 }
 
@@ -560,18 +678,35 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   <a href="mailto:buck@qinary.com" class="btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="this.parentElement.classList.remove('open')">Book Buck</a>
 </div>
 
-<!-- ========== HERO (video background) ========== -->
+<!-- ========== HERO (Tony Robbins-style composite) ========== -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="./assets/Full Bleed Hero.jpg">
-    <source src="./assets/Buck Wise.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
+  <!-- Layer 1: Crowd background -->
+  <div class="hero-bg"></div>
+  <!-- Layer 2: Green cinematic tint -->
+  <div class="hero-tint"></div>
+  <!-- Layer 3: Bottom fade for text -->
+  <div class="hero-fade"></div>
+  <div class="hero-fade-left"></div>
+  <!-- Layer 4: Buck cutout -->
+  <img src="./assets/hero-cutout.png" alt="Buck Wise" class="hero-cutout">
+  <!-- Layer 5: Content -->
+  <div class="hero-content">
     <div class="hero-text">
-      <h1 class="hero-h1">BUCK<br>WISE</h1>
+      <h1 class="hero-h1"><span class="hero-name-accent">Buck Wise</span></h1>
       <p class="hero-subtitle">Entrepreneur. Speaker. Brand Architect.</p>
       <p class="hero-tagline">Building brands that get discovered everywhere &mdash; from Instagram to GPT.</p>
       <a href="mailto:buck@qinary.com" class="btn-primary">Book Buck</a>
+    </div>
+  </div>
+  <!-- Layer 6: Video thumbnail card (bottom-right) -->
+  <div class="hero-video-card" onclick="this.querySelector('video').paused ? this.querySelector('video').play() : this.querySelector('video').pause(); this.querySelector('video').muted=false;">
+    <span class="hero-vc-tag"><span class="hero-vc-dot"></span>HIGHLIGHT REEL</span>
+    <video muted loop playsinline poster="./assets/Full Bleed Hero.jpg">
+      <source src="./assets/Buck Wise.mp4" type="video/mp4">
+    </video>
+    <div class="card-label">
+      <div class="play-icon"><svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg></div>
+      <span>Watch</span>
     </div>
   </div>
 </section>
