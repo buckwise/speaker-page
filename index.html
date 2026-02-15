@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="Building brands that get discovered everywhere — from Instagram to GPT.">
 <meta name="twitter:image" content="https://speaker.qinary.com/assets/Full%20Bleed%20Hero.jpg">
 <link rel="canonical" href="https://speaker.qinary.com">
+<link rel="icon" type="image/png" href="./assets/Qinary Icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -63,10 +64,11 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   height: 64px;
 }
 .nav-logo {
-  font-family: 'DM Sans', sans-serif; font-weight: 700;
-  font-size: 1.25rem; color: #fff; letter-spacing: 2px;
+  display: flex; align-items: center;
 }
-.nav-logo span { color: #39ff14; }
+.nav-logo img {
+  height: 28px; width: auto;
+}
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a {
   font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.7);
@@ -513,7 +515,21 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   border-top: 1px solid rgba(255,255,255,.06);
   font-size: .8rem; color: rgba(255,255,255,.3);
 }
+.footer-logo {
+  display: inline-block; margin-bottom: 16px;
+}
+.footer-logo img {
+  width: 40px; height: 40px; border-radius: 50%;
+  transition: transform .3s;
+}
+.footer-logo:hover img { transform: scale(1.1); }
 .footer a { color: #39ff14; }
+
+/* Journey Qinary logo */
+.journey-qinary-logo {
+  height: 28px; width: auto;
+  margin-bottom: 6px;
+}
 </style>
 </head>
 <body>
@@ -521,7 +537,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 <!-- ========== NAV ========== -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="https://qinary.com" class="nav-logo">BUCK <span>WISE</span></a>
+    <a href="https://qinary.com" class="nav-logo"><img src="./assets/Qinary Logo.png" alt="Qinary"></a>
     <ul class="nav-links">
       <li><a href="#journey">Journey</a></li>
       <li><a href="#proof">Proof</a></li>
@@ -633,7 +649,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
       <div class="journey-stop current" data-step="&#10003;">
         <div>
           <span class="now-tag">NOW</span>
-          <div class="journey-brand">QINARY</div>
+          <img src="./assets/Qinary Logo.png" alt="Qinary" class="journey-qinary-logo">
           <div class="journey-role">Full-Service Personal Brand Agency</div>
           <div class="journey-detail">
             <p>Building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
@@ -760,6 +776,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
+  <a href="https://qinary.com" target="_blank" class="footer-logo"><img src="./assets/Qinary Icon.png" alt="Qinary"></a>
   <p>Powered by <a href="https://qinary.com" target="_blank">Qinary</a> &mdash; &copy; 2026 Buck Wise. All rights reserved.</p>
 </footer>
 
