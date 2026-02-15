@@ -278,156 +278,109 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   }
 }
 
-/* ========== JOURNEY TIMELINE ========== */
+/* ========== THE JOURNEY — card grid ========== */
 .roadmap { padding: 120px 0 100px; position: relative; }
 .roadmap-subtitle {
   text-align: center; font-size: .85rem; color: rgba(255,255,255,.4);
   font-style: italic; margin-top: -32px; margin-bottom: 64px;
 }
 
-.journey-timeline {
+.journey-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0; max-width: 960px; margin: 0 auto;
-  position: relative;
+  gap: 20px; max-width: 1060px; margin: 0 auto;
 }
 
-/* Horizontal connecting line */
-.journey-timeline::before {
-  content: ''; position: absolute;
-  top: 40px; left: 8%; right: 8%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(57,255,20,.25) 15%, rgba(57,255,20,.25) 85%, transparent);
+/* ---- Uniform card ---- */
+.jcard {
+  position: relative; border-radius: 20px; overflow: hidden;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  padding: 32px 28px; display: flex; flex-direction: column;
+  min-height: 220px;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.jcard:hover {
+  border-color: rgba(57,255,20,.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
 }
 
-.journey-stop {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; padding: 0 12px 48px; position: relative;
-  cursor: pointer;
+/* Top row: logo + optional headshot icon */
+.jcard-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-/* Step dot on the line */
-.journey-stop::before {
-  content: attr(data-step);
-  width: 32px; height: 32px; border-radius: 50%;
-  background: #0d0c14; border: 2px solid rgba(57,255,20,.4);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .65rem; font-weight: 800; color: #39ff14;
-  margin-bottom: 24px;
-  transition: all .3s;
-  z-index: 2;
+/* Brand logo */
+.jcard-logo {
+  height: 28px; width: auto; max-width: 120px;
+  object-fit: contain;
 }
-.journey-stop:hover::before {
-  background: #39ff14; color: #08070e;
-  box-shadow: 0 0 20px rgba(57,255,20,.4);
+.jcard-logo.logo-svg { filter: brightness(0) invert(1); }
+.jcard-logo.logo-starbucks { filter: none; height: 40px; }
+.jcard-logo.logo-google { filter: none; height: 24px; }
+.jcard-logo.logo-10x { height: 32px; border-radius: 4px; }
+.jcard-logo.logo-serhant { height: 22px; }
+.jcard-logo.logo-qinary { height: 26px; }
+.jcard-logo.logo-wpp { filter: brightness(0) invert(1); height: 24px; }
+.jcard-logo.logo-serhant { filter: brightness(0) invert(1); height: 22px; }
+
+/* iHeartRadio text logo */
+.jcard-iheart {
+  font-family: 'DM Sans', sans-serif; font-weight: 800;
+  font-size: 1.15rem; color: #fff; letter-spacing: -.3px;
+}
+.jcard-iheart .ih-red { color: #C6002B; }
+
+/* Headshot icon (Cardone, Serhant) */
+.jcard-headshot {
+  width: 44px; height: 44px; border-radius: 50%;
+  object-fit: cover; border: 2px solid rgba(255,255,255,.1);
+  flex-shrink: 0;
 }
 
-/* Brand name — clean text, no fake logos */
-.journey-brand {
+/* Role / title */
+.jcard-role {
   font-family: 'DM Sans', sans-serif;
-  font-weight: 700; font-size: 1.1rem;
-  color: #fff; letter-spacing: .5px;
-  margin-bottom: 6px;
-  transition: color .3s;
-}
-.journey-stop:hover .journey-brand { color: #39ff14; }
-
-.journey-role {
-  font-size: .75rem; color: rgba(255,255,255,.35);
-  line-height: 1.4; max-width: 200px;
+  font-size: .8rem; font-weight: 600; color: #fff;
+  margin-bottom: 10px; letter-spacing: .3px;
 }
 
-/* Special treatment for Qinary (current) */
-.journey-stop.current::before {
-  background: #39ff14; color: #08070e;
-  box-shadow: 0 0 24px rgba(57,255,20,.35);
-  animation: pulseDot 2.5s ease-in-out infinite;
+/* Description — always visible, slight opaque bg */
+.jcard-desc {
+  font-size: .8rem; color: rgba(255,255,255,.5);
+  line-height: 1.55; margin-top: auto;
+  padding: 12px 14px; border-radius: 10px;
+  background: rgba(255,255,255,.03);
 }
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 16px rgba(57,255,20,.25); }
-  50% { box-shadow: 0 0 32px rgba(57,255,20,.5); }
+
+/* Qinary card — featured */
+.jcard.jcard-current {
+  border-color: rgba(57,255,20,.2);
+  background: rgba(57,255,20,.04);
 }
-.journey-stop.current .journey-brand {
-  color: #39ff14;
-  text-shadow: 0 0 16px rgba(57,255,20,.3);
-}
-.now-tag {
+.jcard-now {
   display: inline-block; background: #39ff14; color: #08070e;
-  font-size: .55rem; font-weight: 800; padding: 2px 8px;
-  border-radius: 4px; letter-spacing: 1.5px; margin-bottom: 8px;
-  text-transform: uppercase;
+  font-size: .55rem; font-weight: 800; padding: 3px 10px;
+  border-radius: 4px; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-left: 12px; vertical-align: middle;
 }
 
-/* Hover detail card */
-.journey-detail {
-  position: absolute; top: 100%; left: 50%;
-  transform: translateX(-50%) translateY(8px); opacity: 0;
-  pointer-events: none; transition: opacity .25s, transform .25s;
-  background: rgba(14,14,28,.96); backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(57,255,20,.15); border-radius: 12px;
-  padding: 16px 18px; width: 260px; z-index: 200;
-  box-shadow: 0 12px 40px rgba(0,0,0,.6);
-}
-.journey-stop:hover .journey-detail {
-  opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto;
-}
-.journey-detail p {
-  font-size: .82rem; color: rgba(255,255,255,.7); line-height: 1.5;
-}
-.journey-detail img {
-  width: 100%; height: 90px; object-fit: cover;
-  border-radius: 6px; margin-top: 10px;
+/* Bottom row: center last card if odd count */
+.jcard:last-child:nth-child(3n+1) {
+  grid-column: 2 / 3;
 }
 
-/* Center the last stop (Qinary) across full width */
-.journey-stop:last-child {
-  grid-column: 1 / -1;
-  justify-self: center;
-}
-
-/* Google rainbow text */
-.brand-google span { font-weight: 700; }
-.brand-google .g1 { color: #4285F4; }
-.brand-google .g2 { color: #EA4335; }
-.brand-google .g3 { color: #FBBC05; }
-.brand-google .g4 { color: #4285F4; }
-.brand-google .g5 { color: #34A853; }
-.brand-google .g6 { color: #EA4335; }
-
-/* Tablet: 2-up */
+/* Tablet */
 @media (max-width: 900px) {
-  .journey-timeline { grid-template-columns: repeat(2, 1fr); gap: 0 12px; }
-  .journey-timeline::before { display: none; }
-  .journey-stop { padding-bottom: 36px; }
+  .journey-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .jcard:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 480px; justify-self: center; }
 }
-/* Mobile: single column */
+/* Mobile */
 @media (max-width: 540px) {
-  .journey-timeline {
-    grid-template-columns: 1fr; max-width: 280px;
-    position: relative;
-  }
-  /* Vertical line on mobile */
-  .journey-timeline::before {
-    display: block;
-    top: 0; bottom: 0; left: 16px; right: auto;
-    width: 1px; height: auto;
-    background: linear-gradient(180deg, transparent, rgba(57,255,20,.2) 10%, rgba(57,255,20,.2) 90%, transparent);
-  }
-  .journey-stop {
-    flex-direction: row; text-align: left;
-    align-items: flex-start; gap: 16px;
-    padding: 0 0 32px 0;
-  }
-  .journey-stop::before { flex-shrink: 0; margin-bottom: 0; }
-  .journey-brand { font-size: 1rem; }
-  .journey-detail {
-    position: static; transform: none; opacity: 1;
-    pointer-events: auto; width: auto;
-    background: none; border: none; backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none; padding: 4px 0 0;
-  }
-  .journey-detail img { display: none; }
+  .journey-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .jcard { min-height: auto; padding: 24px 20px; }
+  .jcard:last-child:nth-child(odd) { max-width: none; }
 }
 
 /* ========== SOCIAL PROOF ========== */
@@ -642,12 +595,6 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 }
 .footer-logo:hover img { transform: scale(1.1); }
 .footer a { color: #39ff14; }
-
-/* Journey Qinary logo */
-.journey-qinary-logo {
-  height: 28px; width: auto;
-  margin-bottom: 6px;
-}
 </style>
 </head>
 <body>
@@ -711,85 +658,87 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
   </div>
 </section>
 
-<!-- ========== ROADMAP ========== -->
+<!-- ========== THE JOURNEY ========== -->
 <section class="roadmap" id="journey">
   <div class="container">
     <h2 class="section-label">The <span>Journey</span></h2>
     <p class="roadmap-subtitle">Built &amp; sold two agencies &bull; Acquired by WPP &bull; SVP at Wunderman Thompson &bull; $842M+ in results</p>
 
-    <div class="journey-timeline">
+    <div class="journey-grid">
 
-      <div class="journey-stop" data-step="1">
-        <div>
-          <div class="journey-brand">iHeartRadio</div>
-          <div class="journey-role">Syndicated Radio Host</div>
-          <div class="journey-detail">
-            <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
-          </div>
+      <!-- iHeartRadio -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <span class="jcard-iheart"><span class="ih-red">iHeart</span>Radio</span>
         </div>
+        <div class="jcard-role">Syndicated Radio Host</div>
+        <div class="jcard-desc">Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</div>
       </div>
 
-      <div class="journey-stop" data-step="2">
-        <div>
-          <div class="journey-brand">Nike</div>
-          <div class="journey-role">Social Strategy</div>
-          <div class="journey-detail">
-            <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
-          </div>
+      <!-- Nike -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/Logo_NIKE.svg" alt="Nike" class="jcard-logo logo-svg">
         </div>
+        <div class="jcard-role">Social Strategy</div>
+        <div class="jcard-desc">Built social strategy for Nike Running, Nike Golf, and Nike Women.</div>
       </div>
 
-      <div class="journey-stop" data-step="3">
-        <div>
-          <div class="journey-brand">Starbucks</div>
-          <div class="journey-role">Social Strategy</div>
-          <div class="journey-detail">
-            <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
-          </div>
+      <!-- Starbucks -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/Starbucks_Corporation_Logo_2011.svg" alt="Starbucks" class="jcard-logo logo-starbucks">
         </div>
+        <div class="jcard-role">Social Strategy</div>
+        <div class="jcard-desc">Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</div>
       </div>
 
-      <div class="journey-stop" data-step="4">
-        <div>
-          <div class="journey-brand brand-google"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div>
-          <div class="journey-role">Innovation &amp; Platforms</div>
-          <div class="journey-detail">
-            <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
-          </div>
+      <!-- Google -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/Google__G__logo.svg" alt="Google" class="jcard-logo logo-google">
         </div>
+        <div class="jcard-role">Innovation &amp; Platforms</div>
+        <div class="jcard-desc">Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google&rsquo;s London HQ.</div>
       </div>
 
-      <div class="journey-stop" data-step="5">
-        <div>
-          <div class="journey-brand">Cardone Ventures</div>
-          <div class="journey-role">CMO &bull; $62M+ in 2 years</div>
-          <div class="journey-detail">
-            <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
-            <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
-          </div>
+      <!-- Cardone Ventures / 10X -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/10x.jpg" alt="10X / Cardone Ventures" class="jcard-logo logo-10x">
+          <img src="./assets/Grant Cardone HEadshot.png" alt="Grant Cardone" class="jcard-headshot">
         </div>
+        <div class="jcard-role">CMO &mdash; $62M+ in 2 years</div>
+        <div class="jcard-desc">CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</div>
       </div>
 
-      <div class="journey-stop" data-step="6">
-        <div>
-          <div class="journey-brand">SERHANT.</div>
-          <div class="journey-role">300% revenue growth</div>
-          <div class="journey-detail">
-            <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
-            <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
-          </div>
+      <!-- SERHANT. -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/SERHANT_Logo.jpg" alt="SERHANT." class="jcard-logo logo-serhant">
+          <img src="./assets/Ryan Serhant HeadShot.avif" alt="Ryan Serhant" class="jcard-headshot">
         </div>
+        <div class="jcard-role">300% Revenue Growth</div>
+        <div class="jcard-desc">Built the Serhant Ventures real estate education platform. 300% revenue growth.</div>
       </div>
 
-      <div class="journey-stop current" data-step="&#10003;">
-        <div>
-          <span class="now-tag">NOW</span>
-          <img src="./assets/Qinary Logo.png" alt="Qinary" class="journey-qinary-logo">
-          <div class="journey-role">Full-Service Personal Brand Agency</div>
-          <div class="journey-detail">
-            <p>Building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
-          </div>
+      <!-- WPP / Wunderman Thompson -->
+      <div class="jcard">
+        <div class="jcard-top">
+          <img src="./assets/WPP_2020_logo.svg" alt="WPP" class="jcard-logo logo-wpp">
         </div>
+        <div class="jcard-role">SVP, Wunderman Thompson</div>
+        <div class="jcard-desc">Agency acquired by WPP. Served as SVP at Wunderman Thompson, one of the world&rsquo;s largest advertising networks.</div>
+      </div>
+
+      <!-- QINARY — current -->
+      <div class="jcard jcard-current">
+        <div class="jcard-top">
+          <img src="./assets/Qinary Logo.png" alt="Qinary" class="jcard-logo logo-qinary">
+          <span class="jcard-now">NOW</span>
+        </div>
+        <div class="jcard-role">Founder &amp; CEO</div>
+        <div class="jcard-desc">Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</div>
       </div>
 
     </div>
