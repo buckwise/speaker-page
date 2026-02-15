@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buck Wise — Speaker &amp; Brand Architect | Book for Your Next Event</title>
+<meta name="description" content="Buck Wise is an entrepreneur, speaker, and brand architect who has driven $842M+ in marketing results for brands like Nike, Starbucks, Google, Grant Cardone, and Ryan Serhant. Book Buck for your next event.">
+<meta name="keywords" content="Buck Wise, speaker, keynote, brand architect, personal branding, AI optimization, Qinary">
+<meta property="og:title" content="Buck Wise — Speaker & Brand Architect">
+<meta property="og:description" content="Building brands that get discovered everywhere — from Instagram to GPT. Book Buck for your next keynote or workshop.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://speaker.qinary.com">
+<meta property="og:image" content="https://speaker.qinary.com/assets/Full%20Bleed%20Hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Buck Wise — Speaker & Brand Architect">
+<meta name="twitter:description" content="Building brands that get discovered everywhere — from Instagram to GPT.">
+<meta name="twitter:image" content="https://speaker.qinary.com/assets/Full%20Bleed%20Hero.jpg">
+<link rel="canonical" href="https://speaker.qinary.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: #08070e;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 { font-family: 'DM Sans', sans-serif; font-weight: 700; line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
+
+/* ========== UTILITY ========== */
+.container { width: 100%; max-width: 1184px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 48px;
+  text-align: center;
+}
+.section-label span { color: #00ffb2; }
+.accent { color: #00ffb2; }
+
+/* ========== NAV ========== */
+.nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: rgba(8,7,14,.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background .3s;
+}
+.nav-inner {
+  max-width: 1184px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 1.25rem; color: #fff; letter-spacing: 2px;
+}
+.nav-logo span { color: #00ffb2; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: .875rem; font-weight: 500; color: rgba(255,255,255,.7);
+  transition: color .25s; letter-spacing: .5px;
+}
+.nav-links a:hover { color: #00ffb2; }
+.nav-cta {
+  background: #00ffb2; color: #08070e; font-weight: 600;
+  font-size: .875rem; padding: 10px 24px; border-radius: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,255,178,.3); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; background: none;
+  padding: 4px; cursor: pointer;
+}
+.hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; width: 100%; bottom: 0;
+  background: rgba(8,7,14,.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  z-index: 999;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 1.25rem; color: rgba(255,255,255,.8); font-weight: 500;
+  transition: color .25s;
+}
+.mobile-menu a:hover { color: #00ffb2; }
+
+@media (max-width: 768px) {
+  .nav-links, .nav .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; padding-top: 64px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(0,255,178,.07) 0%, transparent 70%),
+    linear-gradient(180deg, #08070e 0%, #0a0c18 50%, #08070e 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridPulse 8s ease-in-out infinite alternate;
+}
+@keyframes gridPulse { 0% { opacity: .4; } 100% { opacity: .8; } }
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1184px; margin: 0 auto; padding: 0 24px;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: end;
+  gap: 40px; width: 100%; min-height: calc(100vh - 64px);
+}
+.hero-text { align-self: center; padding-bottom: 60px; }
+.hero-h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800; letter-spacing: -2px;
+  background: linear-gradient(135deg, #ffffff 30%, #00ffb2 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.05; margin-bottom: 20px;
+}
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 500; color: rgba(255,255,255,.75);
+  margin-bottom: 16px; letter-spacing: .5px;
+}
+.hero-tagline {
+  font-size: clamp(.95rem, 1.8vw, 1.15rem);
+  color: rgba(255,255,255,.5); max-width: 440px;
+  margin-bottom: 36px; line-height: 1.6;
+}
+.btn-primary {
+  display: inline-block; background: #00ffb2; color: #08070e;
+  font-weight: 700; font-size: 1rem; padding: 16px 40px;
+  border-radius: 12px; transition: transform .25s, box-shadow .25s;
+  letter-spacing: .5px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,255,178,.35); }
+
+.hero-image {
+  position: relative; display: flex; align-items: flex-end;
+  justify-content: center; align-self: end;
+}
+.hero-image-glow {
+  position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,178,.18) 0%, transparent 70%);
+  filter: blur(40px); pointer-events: none;
+}
+.hero-image img {
+  position: relative; z-index: 1; max-height: calc(100vh - 120px);
+  width: auto; object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: auto; }
+  .hero-inner {
+    grid-template-columns: 1fr; text-align: center;
+    min-height: auto; padding-top: 40px; padding-bottom: 0;
+  }
+  .hero-text { padding-bottom: 24px; align-self: start; }
+  .hero-tagline { margin-left: auto; margin-right: auto; }
+  .hero-image { justify-content: center; max-height: 50vh; }
+  .hero-image img { max-height: 50vh; }
+  .hero-image-glow { width: 250px; height: 250px; }
+}
+
+/* ========== ROADMAP ========== */
+.roadmap { padding: 120px 0 100px; position: relative; overflow: hidden; }
+.roadmap-track-wrapper {
+  position: relative; overflow-x: auto; overflow-y: visible;
+  padding: 40px 0 60px; -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: rgba(0,255,178,.3) transparent;
+}
+.roadmap-track-wrapper::-webkit-scrollbar { height: 4px; }
+.roadmap-track-wrapper::-webkit-scrollbar-track { background: transparent; }
+.roadmap-track-wrapper::-webkit-scrollbar-thumb { background: rgba(0,255,178,.3); border-radius: 4px; }
+.roadmap-track {
+  display: flex; align-items: center; gap: 0;
+  min-width: max-content; padding: 0 40px; position: relative;
+}
+.roadmap-line {
+  position: absolute; top: 50%; left: 40px; right: 40px;
+  height: 2px; background: rgba(255,255,255,.08);
+  transform: translateY(-1px); z-index: 0;
+}
+.roadmap-node {
+  position: relative; z-index: 2; display: flex; flex-direction: column;
+  align-items: center; cursor: pointer; flex-shrink: 0;
+}
+.roadmap-node .node-logo {
+  width: 110px; height: 110px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+  position: relative; overflow: visible;
+}
+.roadmap-node:hover .node-logo,
+.roadmap-node.active .node-logo {
+  border-color: rgba(0,255,178,.4);
+  box-shadow: 0 0 30px rgba(0,255,178,.15);
+  transform: scale(1.08);
+}
+.roadmap-node .node-label {
+  margin-top: 14px; font-size: .75rem; font-weight: 600;
+  color: rgba(255,255,255,.5); letter-spacing: 1px; text-transform: uppercase;
+  transition: color .3s; white-space: nowrap;
+}
+.roadmap-node:hover .node-label,
+.roadmap-node.active .node-label { color: #00ffb2; }
+
+.roadmap-connector {
+  width: 80px; height: 2px; background: rgba(255,255,255,.08);
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.roadmap-connector.with-annotation {
+  width: 160px; display: flex; flex-direction: column; align-items: center;
+  height: auto; background: none;
+}
+.roadmap-connector.with-annotation .connector-line {
+  width: 100%; height: 2px; background: rgba(255,255,255,.08);
+}
+.roadmap-annotation {
+  font-size: .65rem; color: rgba(255,255,255,.35); text-align: center;
+  max-width: 180px; line-height: 1.45; margin-top: 16px;
+  font-style: italic; letter-spacing: .3px;
+}
+
+/* Qinary node special */
+.roadmap-node.qinary-node .node-logo {
+  width: 130px; height: 130px; border-radius: 24px;
+  border-color: rgba(0,255,178,.3);
+  box-shadow: 0 0 40px rgba(0,255,178,.1);
+  animation: qinaryPulse 3s ease-in-out infinite;
+}
+@keyframes qinaryPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(0,255,178,.1); }
+  50% { box-shadow: 0 0 50px rgba(0,255,178,.25); }
+}
+.now-badge {
+  position: absolute; top: -10px; right: -10px;
+  background: #00ffb2; color: #08070e; font-size: .6rem;
+  font-weight: 800; padding: 3px 8px; border-radius: 6px;
+  letter-spacing: 1.5px; z-index: 3;
+}
+
+/* Hover card */
+.roadmap-card {
+  position: absolute; bottom: calc(100% + 20px); left: 50%;
+  transform: translateX(-50%) translateY(8px); opacity: 0;
+  pointer-events: none; transition: opacity .3s, transform .3s;
+  background: rgba(14,14,28,.92); backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0,255,178,.15); border-radius: 16px;
+  padding: 20px; width: 290px; z-index: 100;
+}
+.roadmap-node:hover .roadmap-card,
+.roadmap-node.active .roadmap-card {
+  opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto;
+}
+.roadmap-card p { font-size: .85rem; color: rgba(255,255,255,.75); line-height: 1.55; }
+.roadmap-card img {
+  width: 100%; height: 120px; object-fit: cover;
+  border-radius: 8px; margin-top: 12px;
+}
+.roadmap-card::after {
+  content: ''; position: absolute; bottom: -8px; left: 50%;
+  width: 16px; height: 16px;
+  background: rgba(14,14,28,.92);
+  border-right: 1px solid rgba(0,255,178,.15);
+  border-bottom: 1px solid rgba(0,255,178,.15);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Logo SVGs inside nodes */
+.logo-iheart svg { width: 65px; height: auto; }
+.logo-nike svg { width: 75px; height: auto; }
+.logo-starbucks svg { width: 70px; height: auto; }
+.logo-google { display: flex; gap: 1px; align-items: baseline; }
+.logo-google span {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 1.8rem;
+}
+.logo-10x {
+  font-family: 'DM Sans', sans-serif; font-weight: 900;
+  font-size: 2.4rem; color: #fff; letter-spacing: -1px;
+}
+.logo-serhant {
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 1.15rem; color: #fff; letter-spacing: 4px;
+}
+.logo-qinary {
+  font-family: 'DM Sans', sans-serif; font-weight: 800;
+  font-size: 1.35rem; color: #00ffb2; letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(0,255,178,.4);
+}
+
+/* MOBILE ROADMAP */
+@media (max-width: 768px) {
+  .roadmap-track-wrapper { overflow-x: visible; padding: 20px 0; }
+  .roadmap-track {
+    flex-direction: column; min-width: auto; padding: 0;
+    gap: 0; align-items: center;
+  }
+  .roadmap-line { display: none; }
+  .roadmap-connector {
+    width: 2px !important; height: 40px; margin: 0 auto;
+    background: rgba(255,255,255,.08);
+  }
+  .roadmap-connector.with-annotation {
+    width: auto !important; height: auto;
+    flex-direction: column; background: none;
+  }
+  .roadmap-connector.with-annotation .connector-line {
+    width: 2px; height: 20px; margin: 0 auto;
+  }
+  .roadmap-annotation { max-width: 260px; margin: 10px auto; font-size: .7rem; }
+  .roadmap-node { flex-direction: column; align-items: center; width: 100%; max-width: 320px; }
+  .roadmap-node .node-logo { width: 80px; height: 80px; }
+  .roadmap-node.qinary-node .node-logo { width: 100px; height: 100px; }
+  .roadmap-card {
+    position: relative; bottom: auto; left: auto; transform: none;
+    opacity: 0; max-height: 0; overflow: hidden; width: 100%;
+    margin-top: 0; padding: 0;
+    transition: opacity .3s, max-height .4s ease, padding .3s, margin .3s;
+  }
+  .roadmap-node.active .roadmap-card {
+    opacity: 1; max-height: 400px; padding: 20px; margin-top: 12px;
+    transform: none;
+  }
+  .roadmap-card::after { display: none; }
+  .logo-iheart svg { width: 50px; }
+  .logo-nike svg { width: 55px; }
+  .logo-starbucks svg { width: 50px; }
+  .logo-google span { font-size: 1.4rem; }
+  .logo-10x { font-size: 1.8rem; }
+  .logo-serhant { font-size: .95rem; letter-spacing: 3px; }
+  .logo-qinary { font-size: 1.1rem; }
+}
+
+/* ========== SOCIAL PROOF ========== */
+.social-proof { padding: 100px 0; }
+.proof-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.proof-card {
+  position: relative; border-radius: 16px; overflow: hidden;
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+  transition: transform .35s, box-shadow .35s; cursor: pointer;
+  aspect-ratio: 3/4;
+}
+.proof-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 48px rgba(0,0,0,.5); }
+.proof-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.proof-card:hover img { transform: scale(1.05); }
+.proof-card .proof-name {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px 20px 20px;
+  background: linear-gradient(transparent, rgba(8,7,14,.9));
+  font-family: 'DM Sans', sans-serif; font-weight: 600;
+  font-size: clamp(.9rem, 1.5vw, 1.1rem); color: #fff;
+}
+@media (max-width: 768px) {
+  .proof-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .proof-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ========== GALLERY ========== */
+.gallery { padding: 100px 0; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.gallery-item {
+  border-radius: 8px; overflow: hidden; position: relative;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item:nth-child(1) { grid-column: 1 / -1; height: 400px; }
+.gallery-item:nth-child(2) { grid-column: span 3; height: 280px; }
+.gallery-item:nth-child(3) { grid-column: span 3; height: 280px; }
+.gallery-item:nth-child(4) { grid-column: span 2; height: 240px; }
+.gallery-item:nth-child(5) { grid-column: span 2; height: 240px; }
+.gallery-item:nth-child(6) { grid-column: span 2; height: 240px; }
+.gallery-item:nth-child(7) { grid-column: 1 / -1; height: 280px; }
+
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item,
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(6),
+  .gallery-item:nth-child(7) {
+    grid-column: 1 / -1; height: 240px;
+  }
+  .gallery-item:nth-child(1) { height: 280px; }
+}
+
+/* ========== VIDEO ========== */
+.video-section { padding: 100px 0; }
+.video-placeholder {
+  max-width: 800px; margin: 0 auto;
+  aspect-ratio: 16/9; border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 2px solid rgba(0,255,178,.2);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px; position: relative; overflow: hidden;
+}
+.play-btn {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: rgba(0,255,178,.15); border: 2px solid #00ffb2;
+  display: flex; align-items: center; justify-content: center;
+  animation: playPulse 2s ease-in-out infinite;
+  transition: background .3s;
+}
+.play-btn:hover { background: rgba(0,255,178,.3); }
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,178,.3); }
+  50% { box-shadow: 0 0 0 20px rgba(0,255,178,0); }
+}
+.play-btn svg { width: 28px; height: 28px; fill: #00ffb2; margin-left: 4px; }
+.video-placeholder p { color: rgba(255,255,255,.5); font-size: .95rem; }
+
+/* ========== TOPICS ========== */
+.topics { padding: 100px 0; }
+.topics-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+}
+.topic-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px; padding: 36px; position: relative;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+  overflow: hidden;
+}
+.topic-card:hover {
+  border-color: rgba(0,255,178,.3);
+  box-shadow: 0 8px 32px rgba(0,255,178,.08);
+  transform: translateY(-2px);
+}
+.topic-card .topic-num {
+  font-family: 'DM Sans', sans-serif; font-size: 3rem;
+  font-weight: 800; color: rgba(0,255,178,.12); position: absolute;
+  top: 16px; right: 24px; line-height: 1;
+}
+.topic-card h3 {
+  font-size: clamp(1rem, 2vw, 1.2rem); color: #fff;
+  line-height: 1.4; max-width: 90%;
+}
+@media (max-width: 768px) {
+  .topics-grid { grid-template-columns: 1fr; }
+}
+
+/* ========== PRICING ========== */
+.pricing { padding: 100px 0; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  align-items: center;
+}
+.pricing-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 20px; padding: 40px 32px; text-align: center;
+  transition: transform .3s, box-shadow .3s;
+}
+.pricing-card:hover { transform: translateY(-4px); }
+.pricing-card.featured {
+  border-color: rgba(0,255,178,.4);
+  background: rgba(0,255,178,.04);
+  transform: scale(1.05); position: relative;
+}
+.pricing-card.featured:hover { transform: scale(1.05) translateY(-4px); }
+.popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: #00ffb2; color: #08070e; font-size: .7rem; font-weight: 800;
+  padding: 5px 16px; border-radius: 20px; letter-spacing: 1px;
+  text-transform: uppercase; white-space: nowrap;
+}
+.pricing-card .pricing-type {
+  font-size: .85rem; color: rgba(255,255,255,.5); text-transform: uppercase;
+  letter-spacing: 2px; font-weight: 600; margin-bottom: 12px;
+}
+.pricing-card .pricing-desc {
+  font-size: .95rem; color: rgba(255,255,255,.6); margin-bottom: 24px;
+}
+.pricing-card .pricing-amount {
+  font-family: 'DM Sans', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800; color: #fff; margin-bottom: 24px;
+}
+.pricing-card.featured .pricing-amount { color: #00ffb2; }
+.pricing-card .btn-outline {
+  display: inline-block; padding: 12px 32px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.15); color: #fff;
+  font-weight: 600; font-size: .9rem; transition: all .3s;
+}
+.pricing-card .btn-outline:hover {
+  border-color: #00ffb2; color: #00ffb2;
+}
+.pricing-card.featured .btn-outline {
+  background: #00ffb2; color: #08070e; border-color: #00ffb2;
+}
+.pricing-card.featured .btn-outline:hover {
+  background: #00e6a0; box-shadow: 0 4px 20px rgba(0,255,178,.3);
+}
+.pricing-note {
+  text-align: center; margin-top: 32px; font-size: .85rem;
+  color: rgba(255,255,255,.4); font-style: italic;
+}
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .pricing-card.featured { transform: none; }
+  .pricing-card.featured:hover { transform: translateY(-4px); }
+}
+
+/* ========== CONTACT ========== */
+.contact {
+  padding: 120px 0 60px; text-align: center;
+}
+.contact h2 {
+  font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 16px;
+}
+.contact p {
+  font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,.55);
+  max-width: 520px; margin: 0 auto 40px;
+}
+.footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  font-size: .8rem; color: rgba(255,255,255,.3);
+}
+.footer a { color: #00ffb2; }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://qinary.com" class="nav-logo">BUCK <span>WISE</span></a>
+    <ul class="nav-links">
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#proof">Proof</a></li>
+      <li><a href="#stage">On Stage</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="mailto:buck@qinary.com" class="nav-cta">Book Buck</a>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open'); this.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#journey" onclick="this.parentElement.classList.remove('open')">Journey</a>
+  <a href="#proof" onclick="this.parentElement.classList.remove('open')">Proof</a>
+  <a href="#stage" onclick="this.parentElement.classList.remove('open')">On Stage</a>
+  <a href="#topics" onclick="this.parentElement.classList.remove('open')">Topics</a>
+  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
+  <a href="mailto:buck@qinary.com" class="btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="this.parentElement.classList.remove('open')">Book Buck</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 class="hero-h1">BUCK<br>WISE</h1>
+      <p class="hero-subtitle">Entrepreneur. Speaker. Brand Architect.</p>
+      <p class="hero-tagline">Building brands that get discovered everywhere &mdash; from Instagram to GPT.</p>
+      <a href="mailto:buck@qinary.com" class="btn-primary">Book Buck</a>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-glow"></div>
+      <img src="./assets/hero-cutout.png" alt="Buck Wise">
+    </div>
+  </div>
+</section>
+
+<!-- ========== ROADMAP ========== -->
+<section class="roadmap" id="journey">
+  <div class="container">
+    <h2 class="section-label">The <span>Journey</span></h2>
+    <div class="roadmap-track-wrapper">
+      <div class="roadmap-track">
+
+        <!-- STOP 1: iHeartRadio -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo logo-iheart">
+            <svg viewBox="0 0 80 70" width="65" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 65 C40 65 5 42 5 24 C5 14 13 6 23 6 C29 6 34 9 37 13 L40 17 L43 13 C46 9 51 6 57 6 C67 6 75 14 75 24 C75 42 40 65 40 65Z" fill="#C6002B"/>
+              <text x="40" y="38" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="800" font-size="11" fill="white">iHeart</text>
+            </svg>
+          </div>
+          <span class="node-label">iHeartRadio</span>
+          <div class="roadmap-card">
+            <p>Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</p>
+          </div>
+        </div>
+
+        <!-- Connector with annotation -->
+        <div class="roadmap-connector with-annotation">
+          <div class="connector-line"></div>
+          <p class="roadmap-annotation">Built &amp; sold two agencies &bull; Acquired by WPP &bull; SVP at Wunderman Thompson</p>
+        </div>
+
+        <!-- STOP 2: Nike -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo logo-nike">
+            <svg viewBox="0 0 80 36" width="75" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 28.8C8.3 28.4 13 26 20.5 21.5C28 17 37 11.5 44 9C51 6.5 58 6 63 7.5C58 11 45 18 35 22.5C25 27 15 30 10.5 30.5C8.5 30.7 7.2 29.8 7.5 28.8Z" fill="white"/>
+            </svg>
+          </div>
+          <span class="node-label">Nike</span>
+          <div class="roadmap-card">
+            <p>Built social strategy for Nike Running, Nike Golf, and Nike Women.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-connector"></div>
+
+        <!-- STOP 3: Starbucks -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo logo-starbucks">
+            <svg viewBox="0 0 80 80" width="70" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#00704A"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
+              <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1"/>
+              <text x="40" y="37" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="7.5" fill="white" letter-spacing="1">STARBUCKS</text>
+              <text x="40" y="48" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="400" font-size="5.5" fill="rgba(255,255,255,.7)" letter-spacing="1.5">COFFEE</text>
+            </svg>
+          </div>
+          <span class="node-label">Starbucks</span>
+          <div class="roadmap-card">
+            <p>Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-connector"></div>
+
+        <!-- STOP 4: Google -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo">
+            <div class="logo-google">
+              <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+            </div>
+          </div>
+          <span class="node-label">Google</span>
+          <div class="roadmap-card">
+            <p>Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google's London HQ.</p>
+          </div>
+        </div>
+
+        <div class="roadmap-connector"></div>
+
+        <!-- STOP 5: 10X -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo">
+            <span class="logo-10x">10X</span>
+          </div>
+          <span class="node-label">Cardone Ventures</span>
+          <div class="roadmap-card">
+            <p>CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</p>
+            <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone Ventures">
+          </div>
+        </div>
+
+        <div class="roadmap-connector"></div>
+
+        <!-- STOP 6: SERHANT -->
+        <div class="roadmap-node" onclick="toggleNode(this)">
+          <div class="node-logo">
+            <span class="logo-serhant">SERHANT.</span>
+          </div>
+          <span class="node-label">Serhant</span>
+          <div class="roadmap-card">
+            <p>Built the Serhant Ventures real estate education platform. 300% revenue growth.</p>
+            <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
+          </div>
+        </div>
+
+        <div class="roadmap-connector"></div>
+
+        <!-- STOP 7: QINARY -->
+        <div class="roadmap-node qinary-node" onclick="toggleNode(this)">
+          <div class="node-logo">
+            <span class="now-badge">NOW</span>
+            <span class="logo-qinary">QINARY</span>
+          </div>
+          <span class="node-label">Current</span>
+          <div class="roadmap-card">
+            <p>Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SOCIAL PROOF ========== -->
+<section class="social-proof" id="proof">
+  <div class="container">
+    <h2 class="section-label">In Good <span>Company</span></h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <img src="./assets/Grant Cardone Ventures, CMO.JPG" alt="Grant Cardone">
+        <div class="proof-name">Grant Cardone</div>
+      </div>
+      <div class="proof-card">
+        <img src="./assets/Client Ryan Serhant.png" alt="Ryan Serhant">
+        <div class="proof-name">Ryan Serhant</div>
+      </div>
+      <div class="proof-card">
+        <img src="./assets/Glenn Sanford Podcast.jpg" alt="Glenn Sanford">
+        <div class="proof-name">Glenn Sanford, Founder of eXp Realty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="gallery" id="stage">
+  <div class="container">
+    <h2 class="section-label">On <span>Stage</span></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="./assets/Full Bleed Hero.jpg" alt="Buck Wise on stage"></div>
+      <div class="gallery-item"><img src="./assets/buck_levelup.jpg" alt="Buck Wise speaking"></div>
+      <div class="gallery-item"><img src="./assets/Buck Speaking Dubai_Huspy.3.jpg" alt="Buck Wise Dubai"></div>
+      <div class="gallery-item"><img src="./assets/Buck Speaking Dubai_Huspy.2.jpg" alt="Buck Wise speaking event"></div>
+      <div class="gallery-item"><img src="./assets/Buck Speaking Dubai_Huspy.4.jpg" alt="Buck Wise keynote"></div>
+      <div class="gallery-item"><img src="./assets/Buck Speaking Dubai_Huspy..jpg" alt="Buck Wise presentation"></div>
+      <div class="gallery-item"><img src="./assets/Buck Speaking Dubai_Huspy.5.jpg" alt="Buck Wise international speaker"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEO ========== -->
+<section class="video-section" id="video">
+  <div class="container">
+    <h2 class="section-label">Watch Buck <span>Speak</span></h2>
+    <div class="video-placeholder">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+      </div>
+      <p>Speaker highlights coming soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOPICS ========== -->
+<section class="topics" id="topics">
+  <div class="container">
+    <h2 class="section-label">Speaking <span>Topics</span></h2>
+    <div class="topics-grid">
+      <div class="topic-card">
+        <span class="topic-num">01</span>
+        <h3>From Instagram to GPT: Building a Brand That Gets Discovered Everywhere</h3>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">02</span>
+        <h3>The Authority Formula: Social, PR, Content, and AI Optimization</h3>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">03</span>
+        <h3>How to Become the Expert That AI Recommends</h3>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">04</span>
+        <h3>Turning Personal Brand Into a Revenue Engine</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-label">Speaking <span>Fees</span></h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-type">Virtual</div>
+        <p class="pricing-desc">1-Hour Zoom Session</p>
+        <div class="pricing-amount">$5,000</div>
+        <a href="mailto:buck@qinary.com" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="pricing-card featured">
+        <span class="popular-badge">Most Popular</span>
+        <div class="pricing-type">US Mainland</div>
+        <p class="pricing-desc">Keynote Presentation</p>
+        <div class="pricing-amount">$10,000</div>
+        <a href="mailto:buck@qinary.com" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-type">International</div>
+        <p class="pricing-desc">Keynote Presentation</p>
+        <div class="pricing-amount">$20,000</div>
+        <a href="mailto:buck@qinary.com" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <p class="pricing-note">Keynote fees include presentation. Travel and accommodations billed separately.</p>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>Book Buck For Your <span class="accent">Next Event</span></h2>
+    <p>Ready to bring actionable brand-building strategies to your stage?</p>
+    <a href="mailto:buck@qinary.com" class="btn-primary">Get In Touch</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p>Powered by <a href="https://qinary.com" target="_blank">Qinary</a> &mdash; &copy; 2026 Buck Wise. All rights reserved.</p>
+</footer>
+
+<script>
+// Mobile roadmap node toggle
+function toggleNode(el) {
+  if (window.innerWidth > 768) return;
+  var wasActive = el.classList.contains('active');
+  document.querySelectorAll('.roadmap-node').forEach(function(n) { n.classList.remove('active'); });
+  if (!wasActive) el.classList.add('active');
+}
+
+// Close mobile menu on resize to desktop
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    var menu = document.querySelector('.mobile-menu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var href = a.getAttribute('href');
+    var target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  });
+});
+
+// Subtle entrance animations on scroll
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.proof-card, .topic-card, .pricing-card, .gallery-item').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .6s ease, transform .6s ease, border-color .3s, box-shadow .3s';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
