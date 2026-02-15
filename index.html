@@ -327,11 +327,17 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
 .jcard-logo.logo-svg { filter: brightness(0) invert(1); }
 .jcard-logo.logo-starbucks { filter: none; height: 40px; }
 .jcard-logo.logo-google { filter: none; height: 24px; }
-.jcard-logo.logo-10x { height: 32px; border-radius: 4px; }
-.jcard-logo.logo-serhant { height: 22px; }
+.jcard-logo.logo-10x {
+  height: 32px; border-radius: 4px;
+  mix-blend-mode: screen; /* black bg becomes transparent */
+}
+.jcard-logo.logo-serhant {
+  height: 24px;
+  filter: invert(1); /* flip dark-on-white to light-on-black */
+  mix-blend-mode: screen; /* black bg becomes transparent */
+}
 .jcard-logo.logo-qinary { height: 26px; }
 .jcard-logo.logo-wpp { filter: brightness(0) invert(1); height: 24px; }
-.jcard-logo.logo-serhant { filter: brightness(0) invert(1); height: 22px; }
 
 /* iHeartRadio text logo */
 .jcard-iheart {
@@ -683,8 +689,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
         <div class="jcard-top">
           <span class="jcard-iheart"><span class="ih-red">iHeart</span>Radio</span>
         </div>
-        <div class="jcard-role">Syndicated Radio Host</div>
-        <div class="jcard-desc">Syndicated radio across 82+ markets. Las Vegas to Los Angeles alongside Ryan Seacrest.</div>
+        <div class="jcard-role">Syndicated Radio Personality</div>
+        <div class="jcard-desc">Syndicated radio personality across 82+ markets with highlights in Los Angeles alongside Ryan Seacrest. Built a loyal audience through authentic storytelling and cultural commentary.</div>
       </div>
 
       <!-- Nike -->
@@ -692,8 +698,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
         <div class="jcard-top">
           <img src="./assets/Logo_NIKE.svg" alt="Nike" class="jcard-logo logo-svg">
         </div>
-        <div class="jcard-role">Social Strategy</div>
-        <div class="jcard-desc">Built social strategy for Nike Running, Nike Golf, and Nike Women.</div>
+        <div class="jcard-role">Social Media Strategy</div>
+        <div class="jcard-desc">Developed social media strategy for Nike Running, Nike Golf, and Nike Women. Helped shape the voice of one of the world&rsquo;s most iconic brands across digital channels.</div>
       </div>
 
       <!-- Starbucks -->
@@ -701,8 +707,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
         <div class="jcard-top">
           <img src="./assets/Starbucks_Corporation_Logo_2011.svg" alt="Starbucks" class="jcard-logo logo-starbucks">
         </div>
-        <div class="jcard-role">Social Strategy</div>
-        <div class="jcard-desc">Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee, and Summer Frappuccino campaigns.</div>
+        <div class="jcard-role">Social &amp; Campaign Strategy</div>
+        <div class="jcard-desc">Led social strategy for the Pumpkin Spice Latte persona, Via CPG instant coffee launch, and Summer Frappuccino campaigns. Drove cultural conversation at scale for a global brand.</div>
       </div>
 
       <!-- Google -->
@@ -711,7 +717,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
           <img src="./assets/Google__G__logo.svg" alt="Google" class="jcard-logo logo-google">
         </div>
         <div class="jcard-role">Innovation &amp; Platforms</div>
-        <div class="jcard-desc">Innovation, ad platform &amp; Pixel projects. Studied Voice behavior patterns at Google&rsquo;s London HQ.</div>
+        <div class="jcard-desc">Worked on innovation, ad platform strategy, and Pixel product launches. Studied voice search behavior patterns at Google&rsquo;s London HQ to inform next-gen marketing approaches.</div>
       </div>
 
       <!-- Cardone Ventures / 10X -->
@@ -720,8 +726,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
           <img src="./assets/10x.jpg" alt="10X / Cardone Ventures" class="jcard-logo logo-10x">
           <img src="./assets/Grant Cardone HEadshot.png" alt="Grant Cardone" class="jcard-headshot">
         </div>
-        <div class="jcard-role">CMO &mdash; $62M+ in 2 years</div>
-        <div class="jcard-desc">CMO of Grant Cardone Ventures. Helped build the organization to $62M+ in under 2 years.</div>
+        <div class="jcard-role">Chief Marketing Officer</div>
+        <div class="jcard-desc">Served as CMO of Grant Cardone Ventures, architecting the marketing engine that scaled the organization to $62M+ in revenue in under 2 years. Led brand, media, and acquisition strategy.</div>
       </div>
 
       <!-- SERHANT. -->
@@ -730,8 +736,8 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
           <img src="./assets/SERHANT_Logo.jpg" alt="SERHANT." class="jcard-logo logo-serhant">
           <img src="./assets/Ryan Serhant HeadShot.avif" alt="Ryan Serhant" class="jcard-headshot">
         </div>
-        <div class="jcard-role">300% Revenue Growth</div>
-        <div class="jcard-desc">Built the Serhant Ventures real estate education platform. 300% revenue growth.</div>
+        <div class="jcard-role">Brand &amp; Revenue Strategy</div>
+        <div class="jcard-desc">Built the Serhant Ventures real estate education platform from the ground up. Delivered 300% revenue growth through brand positioning, content strategy, and digital product development.</div>
       </div>
 
       <!-- WPP / Wunderman Thompson -->
@@ -740,7 +746,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
           <img src="./assets/WPP_2020_logo.svg" alt="WPP" class="jcard-logo logo-wpp">
         </div>
         <div class="jcard-role">SVP, Wunderman Thompson</div>
-        <div class="jcard-desc">Agency acquired by WPP. Served as SVP at Wunderman Thompson, one of the world&rsquo;s largest advertising networks.</div>
+        <div class="jcard-desc">Built and sold two agencies, ultimately acquired by WPP. Served as SVP at Wunderman Thompson overseeing integrated campaigns for Fortune 500 clients across one of the world&rsquo;s largest agency networks.</div>
       </div>
 
       <!-- QINARY — current -->
@@ -750,7 +756,7 @@ button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; }
           <span class="jcard-now">NOW</span>
         </div>
         <div class="jcard-role">Founder &amp; CEO</div>
-        <div class="jcard-desc">Full-service agency building personal brands discovered everywhere &mdash; from Instagram to GPT. Social, content, PR &amp; AI Optimization.</div>
+        <div class="jcard-desc">Full-service personal brand agency building brands that get discovered everywhere &mdash; from Instagram to ChatGPT. Social, content, PR, and AI Optimization for founders, executives, and public figures.</div>
       </div>
 
     </div>
